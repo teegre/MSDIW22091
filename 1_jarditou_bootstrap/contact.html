@@ -66,34 +66,36 @@
             <input class="custom-control-input" type="radio" id="male" name="genre" value="male">
             <label class="custom-control-label" for="male">Masculin</label>
           </div>
+          <br>
+          <br>
           <div class="form-group">
             <label for="birthdate">Date de naissance*</label>
-            <input class="form-control" type="date" id="birthdate" name="birthdate" required>
+            <input class="form-control" type="date" id="birthdate" name="birthdate" placeholder="Date de naissance" required>
           </div>
           <div class="form-group">
             <label for="zipcode">Code postal*</label>
-            <input type="text" name="zipcode" pattern="[0-9]{5}" id="zipcode" placeholder="Code postal..." required>
+            <input class="form-control" type="text" name="zipcode" pattern="^[0-9]{5}$" id="zipcode" placeholder="Code postal..." required>
           </div>
           <div class="form-group">
           </div>
           <div class="form-group">
-            <label for="address">Adresse : </label>
-            <input type=text name="address" placeholder="Adresse..."><br>
+            <label for="address">Adresse</label>
+            <input class="form-control" type=text name="address" placeholder="Adresse...">
           </div>
           <div class="form-group">
-            <label for="city">Ville : </label>
-            <input type=text name="city" pattern="[A-Za-z]+" placeholder="Ville..."><br>
+            <label for="city">Ville</label>
+            <input class="form-control" type=text name="city" pattern="^[A-Za-z- ]+$" placeholder="Ville...">
           </div>
           <div class="form-group">
-            <label for="email">E-mail* : </label>
-            <input type="email" name="email" placeholder="nom@exemple.com" required>
+            <label for="email">E-mail*</label>
+            <input class="form-control" type="email" name="email" placeholder="nom@exemple.com" required>
           </div>
         </fieldset>
 
-        <fieldset>
-          <legend>Votre demande</legend>
-          <label for="subject">Sujet* : </label>
-          <select id="subject" required>
+        <fieldset class="form-group">
+          <legend class="h1">Votre demande</legend>
+          <label for="subject">Sujet*</label>
+          <select class="form-control" id="subject" required>
             <option value="" selected>Sélectionnez un sujet</option>
             <option value="orders">Mes commandes</option>
             <option value="product">Question sur un produit</option>
@@ -101,18 +103,18 @@
             <option value="other">Autres</option>
           </select>
           <br>
-          <label for="question">Votre question : </label>
-          <textarea name="question" required></textarea>
+          <label for="question">Votre question* : </label>
+          <textarea class="form-control" id="question" name="question" required></textarea>
         </fieldset>
 
-        <div class="process">
-          <input type="checkbox" name="process" required>
-          <label for="process">* J'accepte le traitement informatique de ce formulaire</label>
+        <div class="form-check">
+          <input class="form-check-input" id="process" type="checkbox" name="process" required>
+          <label class="form-check-label" for="process">* J'accepte le traitement informatique de ce formulaire</label>
         </div>
-
+        <br>
         <div class="btn-container">
-          <input type="submit" value="Envoyer" class="btn">
-          <input type="reset"  value="Annuler" class="btn">
+          <input type="submit" value="Envoyer" class="btn btn-dark">
+          <input type="reset"  value="Annuler" class="btn btn-dark">
         </div>
 
       </form>
