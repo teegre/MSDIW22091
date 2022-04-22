@@ -50,7 +50,7 @@ WHERE
 -- 8
 -- Total de chaque commande (décroissant).
 -- Numéro commande et total.
-SELECT numcom, sum(qtecde * priuni) AS total
+SELECT numcom, SUM(qtecde * priuni) AS total
 FROM ligcom
 GROUP BY numcom
 ORDER BY total DESC;
@@ -58,9 +58,64 @@ ORDER BY total DESC;
 -- 9
 -- Commandes > 10000€ dont quantité < 1000.
 -- Numéro commande et total
-SELECT * FROM (
-  SELECT numcom, sum(qtecde) AS qte, sum(qtecde * priuni) AS total
+
+-- 9.1
+SELECT numcom, SUM(qtecde * priuni) AS total
+FROM ligcom
+GROUP BY numcom
+HAVING SUM(qtecde) < 1000 AND SUM(qtecde * priuni) > 10000;
+
+-- 9.2
+SELECT numcom, total FROM (
+  SELECT numcom, SUM(qtecde) AS qte, SUM(qtecde * priuni) AS total
   FROM ligcom
   GROUP BY numcom
-)
+) AS sub
 WHERE total > 10000 AND qte < 1000;
+
+-- 10
+-- Commandes par nom de fournisseur.
+-- nom du fournisseur, numéro de commande et date.
+SELECT nomfou, numcom, datcom
+FROM entcom
+JOIN fournis ON entcom.numfou = fournis.numfou;
+
+-- 11
+-- Produits pour les commande urgentes (observation).
+-- Numéro de commande, nom du fournisseur, libellé du produit et sous-total.
+SELECT entcom.numcom, nomfou, libart, (qtecde * priuni) as sous_total
+FROM entcom
+JOIN fournis ON entcom.numfou = fournis.numfou
+JOIN ligcom ON entcom.numcom = ligcom.numcom
+JOIN produit ON ligcom.codart = produit.codart
+WHERE obscom LIKE '%urgent%';
+
+-- 12
+-- Nom des fournisseurs susceptibles de livrer au moins un article (2 manières).
+
+-- 12.1
+SELECT DISTINCT nomfou
+JOIN entcom ON fournis.numfou = entcom.numfou
+JOIN ligcom ON entcom.numcom = ligcom.numcom
+WHERE qteliv < qtecde;
+
+-- 12.2
+SELECT nomfou
+FROM fournis
+JOIN entcom ON fournis.numfou = entcom.numfou
+JOIN ligcom ON entcom.numcom = ligcom.numcom
+GROUP BY ligcom.numcom
+HAVING SUM(qteliv) < SUM(qtecde);
+
+-- 13
+-- Commandes dont le fournisseur est celui de la commande 70210 (2 manières)
+-- Numéro de commande et date.
+
+-- 13.1
+SELECT numcom, datcom
+FROM entcom
+WHERE numfou = (
+  SELECT numfou
+  FROM entcom
+  WHERE numcom = 70210
+);
