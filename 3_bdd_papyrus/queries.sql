@@ -63,7 +63,7 @@ ORDER BY total DESC;
 SELECT numcom, SUM(qtecde * priuni) AS total
 FROM ligcom
 GROUP BY numcom
-HAVING SUM(qtecde) < 1000 AND SUM(qtecde * priuni) > 10000;
+HAVING SUM(qtecde) < 1000 AND total > 10000;
 
 -- 9.2
 SELECT numcom, total FROM (
@@ -95,6 +95,7 @@ WHERE obscom LIKE '%urgent%';
 
 -- 12.1
 SELECT DISTINCT nomfou
+FROM fournis
 JOIN entcom ON fournis.numfou = entcom.numfou
 JOIN ligcom ON entcom.numcom = ligcom.numcom
 WHERE qteliv < qtecde;
