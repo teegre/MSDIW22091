@@ -1,1 +1,1 @@
-do phps=[ -n "$1" ] && pushd "$1" && php -S localhost:8080; [ -n "$1" ] && popd
+do phps=[ -n "$1" ] && pushd "$1" && php -S localhost:"${2:-8080}"; [ -n "$1" ] && popd
