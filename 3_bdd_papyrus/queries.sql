@@ -4,13 +4,13 @@ SELECT numcom FROM entcom
 WHERE numfou = 9120;
 
 -- 2
--- Codes des fournisseurs qui ont passé des commandes.
+-- Codes des fournisseurs auxquels des commandes ont été passées.
 SELECT numfou FROM entcom
 GROUP BY numfou;
 
 -- 3
 -- Nombre de commandes passées et nombre de fournisseurs concernés.
-SELECT numfou, COUNT(numcom), (SELECT COUNT(distinct numfou) FROM entcom) AS fou_count
+SELECT numfou, COUNT(numcom), (SELECT COUNT(DISTINCT numfou) FROM entcom) AS fou_count
 FROM entcom
 GROUP BY numfou;
 
@@ -26,7 +26,7 @@ WHERE stkphy <= stkale AND qteann < 1000;
 -- Département (decroissant), nom fournisseur (alphabétique).
 SELECT posfou, nomfou
 FROM fournis
-WHERE substr(posfou, 1, 2) IN (75, 78, 92, 77)
+WHERE SUBSTR(posfou, 1, 2) IN (75, 78, 92, 77)
 ORDER BY dep DESC, nomfou ASC;
 
 -- 6
@@ -34,7 +34,7 @@ ORDER BY dep DESC, nomfou ASC;
 -- Numéro de commande et date.
 SELECT numcom, datcom
 FROM entcom
-WHERE month(datcom) IN (3, 4);
+WHERE MONTH(datcom) IN (3, 4);
 
 -- 7
 -- Commandes du jour avec observation.
@@ -42,9 +42,9 @@ WHERE month(datcom) IN (3, 4);
 SELECT numcom, datcom
 FROM entcom
 WHERE 
-  year(datcom) = year(now()) AND
-  month(datcom) = month(now()) AND
-  day(datcom) = day(now()) AND 
+  YEAR(datcom) = YEAR(NOW()) AND
+  MONTH(datcom) = MONTH(NOW()) AND
+  DAY(datcom) = DAY(NOW()) AND
   obscom IS NOT NULL;
 
 -- 8
@@ -113,6 +113,7 @@ HAVING SUM(qteliv) < SUM(qtecde);
 -- Numéro de commande et date.
 
 -- 13.1
+-- The simple way.
 SELECT numcom, datcom
 FROM entcom
 WHERE numfou = (
@@ -120,3 +121,84 @@ WHERE numfou = (
   FROM entcom
   WHERE numcom = 70210
 );
+
+-- 13.2
+-- The recursive way.
+WITH RECURSIVE foucde AS (
+  SELECT *
+  FROM entcom
+  WHERE numcom = 70210
+  UNION
+  SELECT cde.*
+  FROM entcom AS cde
+  JOIN foucde AS fou ON fou.numfou = cde.numfou
+)
+SELECT numcom, datcom
+FROM foucde
+
+-- 14
+-- Articles les moins chers que le moins cher des rubans.
+-- Libellé et prix.
+SELECT libart, prix1
+FROM produit
+JOIN vente ON produit.codart = vente.codart
+GROUP BY codart
+HAVING prix1 < (
+  SELECT MIN(prix1)
+  FROM vente
+  WHERE codart LIKE 'R%'
+)
+
+-- 16
+-- Fournisseurs produits dont stock <= 150% stock d'alerte.
+-- Tri par founisseur et produit.
+SELECT DISTINCT nomfou, libart
+FROM produit
+JOIN ligcom ON produit.codart = ligcom.codart
+JOIN entcom ON ligcom.numcom = entcom.numcom
+JOIN fournis ON entcom.numfou = fournis.numfou
+WHERE stkphy <= (stkale * 1.5)
+ORDER BY nomfou, libart;
+
+-- 17
+-- Total des stocks par fournisseur.
+-- Ordre décroissant.
+SELECT DISTINCT nomfou, libart, stkphy
+FROM produit
+JOIN ligcom ON produit.codart = ligcom.codart
+JOIN entcom ON ligcom.numcom = entcom.numcom
+JOIN fournis ON entcom.numfou = fournis.numfou
+ORDER BY nomfou, stkphy DESC;
+
+-- 18
+-- Produits dont la quantité commandée dépasse 90% de la quantité annuelle prévue.
+SELECT libart, SUM(qtecde) as qte, qteann
+FROM produit
+JOIN ligcom ON produit.codart = ligcom.codart
+GROUP BY ligcom.codart
+HAVING qte > (qteann * 0.9);
+
+-- 19
+-- Chiffre d'affaire par fournisseur pour l'année 2018 (TVA = 20%).
+--
+-- Les seules dates disponibles sont les dates des commandes faites aux fournisseurs (datcom)
+-- dans la table entcom et les dates de dernières livraisons (derliv) dans la table ligcom.
+-- La table ligcom contient le détail des commandes faites aux fournisseurs.
+-- A quoi sert la table vente ???
+-- Il n'y a, à mon sens, aucun moyen de calculer un chiffre d'affaire annuel pour la
+-- société Papyrus avec les données dont nous disposons.
+-- Cependant il est possible de calculer ce que la société a dépensé en 2018 par fournisseur :
+SELECT nomfou, SUM(qtecde * priuni * 1.20) as ca
+FROM fournis
+JOIN entcom ON fournis.numfou = entcom.numfou
+JOIN ligcom ON entcom.numcom = ligcom.numcom
+WHERE YEAR(datcom) = 2018
+GROUP BY nomfou
+-- Nous obtenons :
+-- +-----------+-------------+
+-- | nomfou    | ca          |
+-- +-----------+-------------+
+-- | GROBRIGAN | 43281600.00 |
+-- +-----------+-------------+
+-- Et dans ce cas, le montant calculé est égal au chiffre d'affaire dégagé par les fournisseurs
+-- grâce à leur client Papyrus...
