@@ -179,13 +179,13 @@ GROUP BY ligcom.codart
 HAVING qte > (qteann * 0.9);
 
 -- 19
--- Chiffre d'affaire par fournisseur pour l'année 2018 (TVA = 20%).
+-- Chiffre d'affaires par fournisseur pour l'année 2018 (TVA = 20%).
 --
 -- Les seules dates disponibles sont les dates des commandes faites aux fournisseurs (datcom)
 -- dans la table entcom et les dates de dernières livraisons (derliv) dans la table ligcom.
 -- La table ligcom contient le détail des commandes faites aux fournisseurs.
 -- A quoi sert la table vente ???
--- Il n'y a, à mon sens, aucun moyen de calculer un chiffre d'affaire annuel pour la
+-- Il n'y a, à mon sens, aucun moyen de calculer un chiffre d'affaires annuel pour la
 -- société Papyrus avec les données dont nous disposons.
 -- Cependant il est possible de calculer ce que la société a dépensé en 2018 par fournisseur :
 SELECT nomfou, SUM(qtecde * priuni * 1.20) as ca
@@ -200,5 +200,5 @@ GROUP BY nomfou
 -- +-----------+-------------+
 -- | GROBRIGAN | 43281600.00 |
 -- +-----------+-------------+
--- Et dans ce cas, le montant calculé est égal au chiffre d'affaire dégagé par les fournisseurs
+-- Et dans ce cas, le montant calculé est égal au chiffre d'affaires dégagé par les fournisseurs
 -- grâce à leur client Papyrus...
