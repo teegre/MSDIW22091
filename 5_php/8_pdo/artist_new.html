@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>PDO - Add Artist</title>
+  </head>
+  <body>
+    <h1>Add a new artist</h1>
+    <a href="http://localhost:8080/artists.php"><button>Back to artists</button></a>
+    <br><br>
+    <form action="http://localhost:8080/add_artist.php" method="POST">
+      <label for="artist-name">Artist name:</label><br>
+      <input type="text" name="name" id="artist-name"><br><br>
+      <label for="url">Website</label><br>
+      <input type="text"  name="url" id="url"><br><br>
+      <input type="submit" value="Add">
+    </form>
+  </body>
+</html>
