@@ -61,7 +61,7 @@ ORDER BY ShipCountry;
 -- 7
 -- Chiffre d'affaires global sur les ventes de 1997.
 -- Montant Ventes 97.
-SELECT SUM((UnitPrice*Quantity)-Discount) AS `Montant ventes 1997`
+SELECT SUM((UnitPrice*Quantity)-Discount) AS `Montant ventes 97`
 FROM `order details`
 JOIN orders ON `order details`.OrderID = orders.OrderID
 WHERE YEAR(OrderDate) = 1997;
@@ -72,7 +72,7 @@ WHERE YEAR(OrderDate) = 1997;
 SELECT MONTH(OrderDate) AS `Mois 97`, SUM((UnitPrice*Quantity)-Discount) AS `Montant Ventes`
 FROM `order details`
 JOIN orders ON `order details`.OrderID = orders.OrderID
-WHERE year(orders.OrderDate) = 1997
+WHERE year(OrderDate) = 1997
 GROUP BY `Mois 97`
 ORDER BY `Mois 97`;
 
