@@ -8,7 +8,7 @@ function connectDB() {
   }
   catch (Exception $e)
   {
-    echo "Erreur : " . $e->getMessage() . "<br />";
+    echo "Erreur : " . $e->getMessage() . "<br>";
     echo "N° : " . $e->getCode();
     die('Fin du script');
   }
