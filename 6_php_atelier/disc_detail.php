@@ -7,7 +7,7 @@ $disc = getDisc($_GET['disc_id']);
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <title>Velvet Records - Details</title>
   </head>
   <body>
@@ -54,14 +54,14 @@ $disc = getDisc($_GET['disc_id']);
       <div class="row mt-2">
         <div class="col">
           <button class="btn btn-primary btn-sm">Edit</button>
-          <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="confirm">Delete</button>
+          <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#confirm">Delete</button>
           <a href="http://localhost:8080"><button class="btn btn-primary btn-sm">Back</button></a>
         </div>
       </div>
     </div>
     <!-- modal confirm box -->
     <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-small" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="modal-label">warning</h5>
@@ -74,14 +74,14 @@ $disc = getDisc($_GET['disc_id']);
             <p>there's no turning back...</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
-            <button type="button" class="btn btn-danger">delete</button>
+            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">cancel</button>
+            <a href="http://localhost;8080/assets/php/delete_disc.php?disc_id=<?= $disc->disc_id ?>"><button class="btn btn-danger btn-sm">delete</button></a>
           </div>
         </div>
       </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
   </body>
 
