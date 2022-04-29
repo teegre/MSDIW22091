@@ -110,18 +110,25 @@ function getArtists() {
   }
 }
 
-function artistInputSelect() {
+function artistInputSelect($selected = Null) {
   // display options for artists. 
   $artists = getArtists();
   foreach ($artists as $artist) {
-    echo '<option value="' . $artist->artist_id . '">' . $artist->artist_name . '</option>';
+    if ($artist->artist_id == $selected)
+      echo '<option value="' . $artist->artist_id . '" selected>' . $artist->artist_name . '</option>';
+    else
+      echo '<option value="' . $artist->artist_id . '">' . $artist->artist_name . '</option>';
   }
 }
 
-function fileInputSelect() {
+function fileInputSelect ($required = true, $label = true) {
   // add a file input.
-  echo '<label class="form-label form-label-sm" for="picture">Choose file...</label><br>';
-  echo '<input class="form-control form-control-sm" type="file" name="picture" id="picture" required>';
+  if ($label)
+    echo '<label class="form-label form-label-sm" for="picture">Choose file...</label><br>';
+  if ($required)
+    echo '<input class="form-control form-control-sm" type="file" name="picture" id="picture" required>';
+  else
+    echo '<input class="form-control form-control-sm" type="file" name="picture" id="picture">';
 }
 
 function displayError($msg, $fatal=false) {
