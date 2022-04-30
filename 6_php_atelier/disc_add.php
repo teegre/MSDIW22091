@@ -1,24 +1,23 @@
-<?php
-require "assets/php/utils.php";
-$discs = getDiscs()
-?>
+<?php require "assets/php/utils.php" ?>
 
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="assets/favicon.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Velvet Records - Add record</title>
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <title>Velvet Records - Add Record</title>
   </head>
   <body>
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-8">
-          <h1><b>Add record</b></h1>
+          <h1><b>Add Record</b></h1>
         </div>
         <div class="col">
-          <a href="http://localhost:8080/index.php"><button class="btn btn-primary">Back to list</button></a>
+          <a href="http://localhost:8080/index.php"><button class="btn btn-outline-secondary btn-sm">Back to list</button></a>
         </div>
       </div>
       <form action="http://localhost:8080/assets/php/add_disc.php" method="POST" enctype="multipart/form-data">
@@ -49,8 +48,8 @@ $discs = getDiscs()
             <br>
           </fieldset>
           <fieldset>
-            <button type="submit" class="btn btn-primary btn-sm">Add</button>
-            <button type="reset"  class="btn btn-primary btn-sm">Reset</button>
+            <button type="submit" class="btn btn-outline-secondary btn-sm">Add</button>
+            <button type="reset"  class="btn btn-outline-secondary btn-sm">Reset</button>
           </fieldset>
         </div>
       </form>

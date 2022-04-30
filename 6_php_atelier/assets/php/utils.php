@@ -78,7 +78,7 @@ function displayDisc($disc) {
   echo '<div class="col-md-2 d-flex flex-row align-self-center mr-1 mb-1 p-0">';
   echo '<div class="mb-auto">';
   echo '<img class="img-fluid img-thumbnail" ';
-  echo 'alt="cover picture of ' . $title . ' "';
+  echo 'alt="cover picture of ' . $title . '" ';
   echo 'title="' . $title . '" ';
   echo 'src="assets/img/' . $disc->disc_picture . '"';
   echo '>';
@@ -94,7 +94,7 @@ function displayDisc($disc) {
   echo '</div>';
   echo '<div class="mt-auto pb-3">';
   echo '<a href="http://localhost:8080/disc_detail.php?disc_id=' . $disc->disc_id . '">';
-  echo '<button class="btn btn-primary btn-sm">Detail</button></a>';
+  echo '<button class="btn btn-outline-secondary btn-sm">Details</button></a>';
   echo '</div>';
   echo '</div>';
 }
@@ -131,6 +131,33 @@ function fileInputSelect ($required = true, $label = true) {
     echo '<input class="form-control form-control-sm" type="file" name="picture" id="picture">';
 }
 
+function movePictureFile($tmpfile, $title) {
+  // move cover picture to its destination.
+  // return filename if success, an empty string otherwise.
+
+  // check if file is an actual image.
+  if (! @is_array(getimagesize($tmpfile))) {
+    displayError('uploaded file is not an image!');
+    die();
+  }
+
+  // if the file is ok, determine extension via its mimetype.
+  $finfo = finfo_open(FILEINFO_MIME_TYPE);
+  $mimetype = finfo_file($finfo, $tmpfile);
+  finfo_close($finfo);
+  $ext = substr($mimetype, strrpos($mimetype, '/') + 1);
+
+  // give the file a name (replace whitespaces by underscores).
+  $filename = str_replace(' ', '_', strtolower($title)) . '.' . $ext; 
+
+  // then move it to its destination,
+  // that is: assets/img/
+  if (move_uploaded_file($tmpfile, '../img/' . $filename))
+    return $filename;
+  else
+    return '';
+}
+
 function displayError($msg, $fatal=false) {
   // display an error message.
   echo '<div class="jumbotron mt-2">';
@@ -139,9 +166,9 @@ function displayError($msg, $fatal=false) {
   echo '  <p class="lead">' . $msg . '</p>';
   if (! $fatal) {
     echo '  <p class="lead">';
-    echo '    <button class="btn btn-sm btn-primary" onclick="window.history.back()">Back</button>';
+    echo '    <button class="btn btn-sm btn-outline-secondary" onclick="window.history.back()">Back</button>';
     echo '    <a href="http://localhost:8080/index.php">';
-    echo '    <button class="btn btn-sm btn-danger">Home</button></a>';
+    echo '    <button class="btn btn-sm btn-outline-danger">Home</button></a>';
     echo '  </p>';
   }
   echo '</div>';

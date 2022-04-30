@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="assets/img/favicon.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/custom.css">
     <title>Velvet Records - Add record</title>
   </head>
   <body>
     <?php
     require "utils.php";
-
-    $tmpfile = $_FILES['picture']['tmp_name'];
 
     // check if there's an error.
     if ($_FILES['picture']['error'] != 0) {
@@ -18,26 +18,13 @@
       die();
     }
 
-    // check if file is an actual image.
-    if (! @is_array(getimagesize($tmpfile))) {
-      displayError('uploaded file is not an image!');
+    $tmpfile = $_FILES['picture']['tmp_name'];
+
+    $filename = movePictureFile($tmpfile, $_POST['title'] . '-' . $_POST['artist']);
+
+    if ($filename == '') {
+      displayError('could not move image file!');
       die();
-    }
-
-    // if the file is ok, determine extension via its mimetype.
-    $finfo = finfo_open(FILEINFO_MIME_TYPE);
-    $mimetype = finfo_file($finfo, $tmpfile);
-    finfo_close($finfo);
-    $ext = substr($mimetype, strrpos($mimetype, '/') + 1);
-
-    // give the file a name.
-    $filename = strtolower($_POST['title']) . '.' . $ext; 
-
-    // then move it to its destination,
-    // that is: assets/img/
-    if (! move_uploaded_file($tmpfile, '../img/' . $filename)) {
-      var_dump($tmpfile, $filename);
-      displayError('could not copy image file!');
     }
 
     // add record to the database.

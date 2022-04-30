@@ -7,13 +7,15 @@ $disc = getDisc($_GET['disc_id']);
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="assets/favicon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <title>Velvet Records - Edit</title>
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <title>Velvet Records - Edit Record</title>
   </head>
   <body>
     <div class="container">
-      <h1><b>Edit record</b></h1>
-    <form action="http://localhost:8080/assets/php/update_disc.php" method="POST">
+      <h1><b>Edit Record</b></h1>
+    <form action="http://localhost:8080/assets/php/update_disc.php" method="POST" enctype="multipart/form-data">
       <fieldset>
         <input type=text id="disc_id" name="disc_id" value="<?= $disc->disc_id ?>" hidden>
         <label for="title">Title</label>
@@ -37,8 +39,8 @@ $disc = getDisc($_GET['disc_id']);
         <img src="assets/img/<?= $disc->disc_picture ?>" alt="<?= $disc->artist_name . " - " . $disc->disc_title ?>" width="300">
       </div>
       <fieldset>
-        <input type="submit" class="btn btn-warning btn-sm" value="Save">
-        <button class="btn btn-primary btn-sm" onclick="history.back()">Back</button>
+        <input type="submit" class="btn btn-outline-danger btn-sm" value="Save">
+        <button class="btn btn-outline-secondary btn-sm" onclick="history.back()">Back</button>
       </fieldset>
     </form>
 

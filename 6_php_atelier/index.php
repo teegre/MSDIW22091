@@ -5,18 +5,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="assets/favicon.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/custom.css">
     <title>Velvet Records</title>
   </head>
   <body>
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-8">
-        <?php $discs = getDiscs() ?>
-        <h1><b>Records list (<?php echo count($discs) ?>)</b></h1>
+          <?php $discs = getDiscs() ?>
+          <h1><b>Records (<?php echo count($discs) ?>)</b></h1>
         </div>
         <div class="col">
-          <a href="http://localhost:8080/disc_add.php"><button class="btn btn-primary">Add record</button></a>
+          <a href="http://localhost:8080/disc_add.php"><button class="btn btn-outline-secondary btn-sm">Add record</button></a>
         </div>
       </div>
       <?php 
