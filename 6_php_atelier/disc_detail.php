@@ -60,6 +60,7 @@ $disc = getDisc($_GET['disc_id']);
           <button class="btn btn-outline-secondary btn-sm" onclick="history.back()">Back</button>
         </div>
       </div>
+      <?php displayRelatedDiscs($disc->artist_id, $disc->disc_id) ?>
     </div>
     <!-- modal confirm box -->
     <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">

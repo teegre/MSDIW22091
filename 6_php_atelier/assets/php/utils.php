@@ -3,7 +3,10 @@
 function connect() {
   // connect to record database.
   try {
-    $c = new PDO("mysql:host=localhost;charset=utf8;dbname=record", "admin", "alcfmapjtlsbqjmsb");
+    $conf = parse_ini_file('db.ini');
+    $user = $conf['user'];
+    $pass = $conf['pass'];
+    $c = new PDO("mysql:host=localhost;charset=utf8;dbname=record", $user, $pass);
     $c->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $c;
   }
@@ -14,9 +17,9 @@ function connect() {
 }
 
 function getDiscs() {
-  // fetch all!
+  // fetch all discs!
   $db = connect();
-  if (isset($db)) {
+  try {
     $q = $db->query("
       SELECT * FROM disc
       JOIN artist ON disc.artist_id = artist.artist_id
@@ -25,28 +28,36 @@ function getDiscs() {
     $q->closeCursor();
     return $r;
   }
+  catch (Exception $e) {
+    displayError($e->getMessage(), true);
+    die();
+  }
 }
 
 function getDisc($id) {
   // return disc details.
   $db = connect();
-  if (isset($db)) {
+  try {
     $q = $db->prepare("
-      SELECT * FROM disc
-      JOIN artist ON disc.artist_id = artist.artist_id
-      WHERE disc_id = ?
-    ");
-    $q->execute(array($id));
-    $r = $q->fetch(PDO::FETCH_OBJ);
-    $q->closeCursor();
-    return $r;
+        SELECT * FROM disc
+        JOIN artist ON disc.artist_id = artist.artist_id
+        WHERE disc_id = ?
+      ");
+      $q->execute(array($id));
+      $r = $q->fetch(PDO::FETCH_OBJ);
+      $q->closeCursor();
+      return $r;
+  }
+  catch (Exception $e) {
+    displayError($e->getMessage());
+    die();
   }
 }
 
 function getDiscCount($artist_id) {
   // get disc count for a given artist_id.
   $db = connect();
-  if (isset($db)) {
+  try {
     $q = $db->prepare("
       SELECT COUNT(*) FROM disc
       JOIN artist ON disc.artist_id = artist_id
@@ -57,19 +68,21 @@ function getDiscCount($artist_id) {
     $q->closeCursor();
     return $r;
   }
+  catch (Exception $e) {
+    displayError($e->getMessage());
+    die();
+  }
 }
 
 function deleteDisc($disc_id) {
   // delete given disc from the database.
   $db = connect();
-  if (isset($db)) {
-    $q = $db->prepare("
-      DELETE FROM disc
-      WHERE disc_id = ?
-    ");
-    $q->execute(array($disc_id));
-    $q->closeCursor();
-  }
+  $q = $db->prepare("
+    DELETE FROM disc
+    WHERE disc_id = ?
+  ");
+  $q->execute(array($disc_id));
+  $q->closeCursor();
 }
 
 function displayDisc($disc) {
@@ -96,6 +109,50 @@ function displayDisc($disc) {
   echo '<a href="http://localhost:8080/disc_detail.php?disc_id=' . $disc->disc_id . '">';
   echo '<button class="btn btn-outline-secondary btn-sm">Details</button></a>';
   echo '</div>';
+  echo '</div>';
+}
+
+function getArtistDiscs($artist_id, $current_disc_id) {
+  // return all discs from given artist except current.
+  $db = connect();
+  try {
+    $q = $db->prepare('
+      SELECT disc_id, disc_title, disc_year, disc_picture
+      FROM disc
+      WHERE artist_id = :artist_id
+      AND disc_id <> :disc_id
+      ORDER BY disc_year;
+    ');
+    $q->bindValue(':disc_id', $current_disc_id, PDO::PARAM_INT);
+    $q->bindValue(':artist_id', $artist_id, PDO::PARAM_INT);
+    $q->execute();
+    $r = $q->fetchAll(PDO::FETCH_OBJ);
+    $q->closeCursor();
+    return $r;
+  }
+  catch (Exception $e) {
+    displayError($e->getMessage());
+    die();
+  }
+}
+
+function displayRelatedDiscs($artist_id, $current_disc_id) {
+  $discs = getArtistDiscs($artist_id, $current_disc_id);
+  if ($discs == Null) return;
+  echo '<div class="row mt-2">';
+  echo '  <div class="col">';
+  echo '    <h4><b>From the same artist</b></h4>';
+  echo '    <hr>';
+  echo '  </div>';
+  echo '</div>';
+  echo '<div class="row">';
+  foreach ($discs as $disc) {
+    echo '<div class="col-1">';
+    echo '  <a href="http://localhost:8080/disc_detail.php?disc_id=' . $disc->disc_id . '">';
+    echo '   <img class="img-fluid" width="100" src="assets/img/' . $disc->disc_picture . '" alt="' . $disc->disc_title . '" title="' . $disc->disc_title . ' (' . $disc->disc_year . ')">';
+    echo '  </a>';
+    echo '</div>';
+  }
   echo '</div>';
 }
 
