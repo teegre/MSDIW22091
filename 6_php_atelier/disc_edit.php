@@ -29,7 +29,7 @@
           <?php artistInputSelect($disc->artist_id) ?> 
         </select>
         <label for="year">Year</label>
-        <input class="form-control form-control-sm mb-1" type="text" name="year" id="year" value="<?= $disc->disc_year ?>" pattern="^[0-9]{4]$}" required>
+        <input class="form-control form-control-sm mb-1" type="text" name="year" id="year" value="<?= $disc->disc_year ?>" pattern="^[0-9]{4}$" required>
         <label for="genre">Genre</label>
         <input class="form-control form-control-sm mb-1" type="text" name="genre" id="genre" value="<?= $disc->disc_genre ?>" required>
         <label for="label">Label</label>
