@@ -1,7 +1,3 @@
-<?php
-require "assets/php/utils.php";
-$disc = getDisc($_GET['disc_id']);
- ?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -14,6 +10,14 @@ $disc = getDisc($_GET['disc_id']);
   </head>
   <body>
     <div class="container">
+      <?php
+      require "assets/php/utils.php";
+      $disc = getDisc($_GET['disc_id']);
+      if ($disc == Null) {
+        displayError('no such record in the database...');
+        die();
+      }
+      ?>
       <h1><b>Details</b></h1>
       <div class="row mb-2">
         <div class="col">

@@ -39,14 +39,14 @@ function getDisc($id) {
   $db = connect();
   try {
     $q = $db->prepare("
-        SELECT * FROM disc
-        JOIN artist ON disc.artist_id = artist.artist_id
-        WHERE disc_id = ?
-      ");
-      $q->execute(array($id));
-      $r = $q->fetch(PDO::FETCH_OBJ);
-      $q->closeCursor();
-      return $r;
+      SELECT * FROM disc
+      JOIN artist ON disc.artist_id = artist.artist_id
+      WHERE disc_id = ?
+    ");
+    $q->execute(array($id));
+    $r = $q->fetch(PDO::FETCH_OBJ);
+    $q->closeCursor();
+    return $r;
   }
   catch (Exception $e) {
     displayError($e->getMessage());
@@ -113,7 +113,7 @@ function displayDisc($disc) {
 }
 
 function getArtistDiscs($artist_id, $current_disc_id) {
-  // return all discs from given artist except current.
+  // return all discs except current from given artist.
   $db = connect();
   try {
     $q = $db->prepare('
@@ -147,9 +147,9 @@ function displayRelatedDiscs($artist_id, $current_disc_id) {
   echo '</div>';
   echo '<div class="row">';
   foreach ($discs as $disc) {
-    echo '<div class="col-1">';
+    echo '<div class="col-2">';
     echo '  <a href="http://localhost:8080/disc_detail.php?disc_id=' . $disc->disc_id . '">';
-    echo '   <img class="img-fluid" width="100" src="assets/img/' . $disc->disc_picture . '" alt="' . $disc->disc_title . '" title="' . $disc->disc_title . ' (' . $disc->disc_year . ')">';
+    echo '   <img class="img-fluid img-thumbnail" src="assets/img/' . $disc->disc_picture . '" alt="' . $disc->disc_title . '" title="' . $disc->disc_title . ' (' . $disc->disc_year . ')">';
     echo '  </a>';
     echo '</div>';
   }

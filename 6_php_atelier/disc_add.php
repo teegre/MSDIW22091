@@ -48,7 +48,7 @@
             <br>
           </fieldset>
           <fieldset>
-            <button type="submit" class="btn btn-outline-secondary btn-sm">Add</button>
+            <button type="submit" class="btn btn-outline-success btn-sm">Add</button>
             <button type="reset"  class="btn btn-outline-secondary btn-sm">Reset</button>
           </fieldset>
         </div>
