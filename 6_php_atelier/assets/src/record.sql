@@ -76,7 +76,7 @@ CREATE TABLE `disc` (
   PRIMARY KEY (`disc_id`),
   KEY `artist_id` (`artist_id`),
   CONSTRAINT `disc_ibfk_1` FOREIGN KEY (`artist_id`) REFERENCES `artist` (`artist_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -117,7 +117,8 @@ INSERT INTO `disc` VALUES
 (44,'EP7',1999,'ep7-23.jpeg','Warp Records','Abstract, IDM',49.00,23),
 (45,'Bossanova',1990,'bossanova-26.jpeg','4AD','Indie Rock',19.00,26),
 (46,'Loveless',1991,'loveless-27.jpeg','Creation Records','Alternative Rock, Shoegaze, Noise',160.00,27),
-(47,'Music Has The Right To Children',1998,'music_has_the_right_to_children-28.jpeg','Warp Records','Electronic, IDM, Ambient, Trip Hop',33.00,28);
+(47,'Music Has The Right To Children',1998,'music_has_the_right_to_children-28.jpeg','Warp Records','Electronic, IDM, Ambient, Trip Hop',33.00,28),
+(48,'Richard D James Album',1996,'richard_d_james_album-24.jpeg','Warp Records','Electronic, Abstract, IDM, Experimental, Acid',30.00,24);
 /*!40000 ALTER TABLE `disc` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -130,4 +131,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-30 16:00:03
+-- Dump completed on 2022-04-30 22:16:22
