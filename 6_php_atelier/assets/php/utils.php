@@ -90,11 +90,12 @@ function displayDisc($disc) {
   $title = $disc->artist_name . " - " . $disc->disc_title;
   echo '<div class="col-md-2 d-flex flex-row align-self-center mr-1 mb-1 p-0">';
   echo '<div class="mb-auto">';
+  echo '<a href="http://localhost:8080/disc_detail.php?disc_id=' . $disc->disc_id . '">';
   echo '<img class="img-fluid img-thumbnail" ';
   echo 'alt="cover picture of ' . $title . '" ';
   echo 'title="' . $title . '" ';
   echo 'src="assets/img/' . $disc->disc_picture . '"';
-  echo '>';
+  echo '></a>';
   echo '</div>';
   echo '</div>';
   echo '<div class="col-md-3 d-flex flex-column mr-0 p-0">';
