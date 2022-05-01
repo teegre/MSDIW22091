@@ -3,7 +3,7 @@
 function connect() {
   // connect to record database.
   try {
-    $conf = parse_ini_file('db.ini');
+    $conf = parse_ini_file(dirname(__FILE__) . '/db.ini');
     $user = $conf['user'];
     $pass = $conf['pass'];
     $c = new PDO("mysql:host=localhost;charset=utf8;dbname=record", $user, $pass);
