@@ -138,6 +138,7 @@ function getArtistDiscs($artist_id, $current_disc_id) {
 }
 
 function displayRelatedDiscs($artist_id, $current_disc_id) {
+  // display other records from the same artist.
   $discs = getArtistDiscs($artist_id, $current_disc_id);
   if ($discs == Null) return;
   echo '<div class="row mt-2">';
@@ -186,7 +187,7 @@ function fileInputSelect ($required = true, $label = true) {
   if ($required)
     echo '<input class="form-control form-control-sm" type="file" name="picture" id="picture" required>';
   else
-    echo '<input class="form-control form-control-sm" type="file" name="picture" id="picture">';
+    echo '<input class="form-control form-control-sm" type="file" name="picture" id="picture" onchange="updatePicture()">';
 }
 
 function movePictureFile($tmpfile, $title) {
