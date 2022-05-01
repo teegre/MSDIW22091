@@ -18,7 +18,14 @@
         die();
       }
       ?>
-      <h1><b>Details</b></h1>
+      <div class="row align-items-center">
+        <div class="col">
+          <h1><b>Details</b></h1>
+        </div>
+        <div class="col">
+          <a href="http://localhost:8080/index.php"><button class="btn btn-outline-secondary btn-sm">Back to list</button></a>
+        </div>
+      </div>
       <div class="row mb-2">
         <div class="col">
           <label for="title">Title</label>
