@@ -27,7 +27,7 @@ CREATE TABLE `artist` (
   `artist_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `artist_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`artist_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,7 +53,8 @@ INSERT INTO `artist` VALUES
 (25,'Cocteau Twins',NULL),
 (26,'Pixies',NULL),
 (27,'My Bloody Valentine',NULL),
-(28,'Boards Of Canada',NULL);
+(28,'Boards Of Canada',NULL),
+(29,'Steely Dan',NULL);
 /*!40000 ALTER TABLE `artist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -76,7 +77,7 @@ CREATE TABLE `disc` (
   PRIMARY KEY (`disc_id`),
   KEY `artist_id` (`artist_id`),
   CONSTRAINT `disc_ibfk_1` FOREIGN KEY (`artist_id`) REFERENCES `artist` (`artist_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,7 +119,9 @@ INSERT INTO `disc` VALUES
 (45,'Bossanova',1990,'bossanova-26.jpeg','4AD','Indie Rock',19.00,26),
 (46,'Loveless',1991,'loveless-27.jpeg','Creation Records','Alternative Rock, Shoegaze, Noise',160.00,27),
 (47,'Music Has The Right To Children',1998,'music_has_the_right_to_children-28.jpeg','Warp Records','Electronic, IDM, Ambient, Trip Hop',33.00,28),
-(48,'Richard D James Album',1996,'richard_d_james_album-24.jpeg','Warp Records','Electronic, Abstract, IDM, Experimental, Acid',30.00,24);
+(48,'Richard D James Album',1996,'richard_d_james_album-24.jpeg','Warp Records','Electronic, Abstract, IDM, Experimental, Acid',30.00,24),
+(49,'Pretzel Logic',1974,'pretzel_logic-29.jpeg','ABC Records','Jazz-Rock, Pop-Rock, Classic Rock',5.00,29),
+(50,'Aja',1977,'aja-29.jpeg','ABC Records','Jazz-Rock, Pop-Rock, Classic Rock',15.00,29);
 /*!40000 ALTER TABLE `disc` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -131,4 +134,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-30 22:16:22
+-- Dump completed on 2022-05-01 14:24:58
