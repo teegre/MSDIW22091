@@ -9,7 +9,7 @@
     <title>Velvet Records - Record Details</title>
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container">
       <?php
       require "assets/php/utils.php";
       $disc = getDisc($_GET['disc_id']);
