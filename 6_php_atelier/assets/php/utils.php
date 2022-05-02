@@ -141,7 +141,7 @@ function displayRelatedDiscs($artist_id, $current_disc_id) {
   // display other records from the same artist.
   $discs = getArtistDiscs($artist_id, $current_disc_id);
   if ($discs == Null) return;
-  echo '<div class="row mt-2">';
+  echo '<div class="row mt-3">';
   echo '  <div class="col">';
   echo '    <h4><b>From the same artist</b></h4>';
   echo '    <hr>';

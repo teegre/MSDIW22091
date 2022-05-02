@@ -22,7 +22,7 @@
         <div class="col">
           <h1><b>Edit Record</b></h1>
         </div>
-        <div class="col">
+        <div class="col text-right">
           <a href="http://localhost:8080/index.php"><button class="btn btn-outline-secondary btn-sm">Back to list</button></a>
         </div>
       </div>

@@ -16,7 +16,7 @@
         <div class="col-md-8">
           <h1><b>Add Record</b></h1>
         </div>
-        <div class="col">
+        <div class="col text-right">
           <a href="http://localhost:8080/index.php"><button class="btn btn-outline-secondary btn-sm">Back to list</button></a>
         </div>
       </div>

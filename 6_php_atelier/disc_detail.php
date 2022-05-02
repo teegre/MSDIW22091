@@ -9,7 +9,7 @@
     <title>Velvet Records - Record Details</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <?php
       require "assets/php/utils.php";
       $disc = getDisc($_GET['disc_id']);
@@ -22,7 +22,7 @@
         <div class="col">
           <h1><b>Details</b></h1>
         </div>
-        <div class="col">
+        <div class="col text-right">
           <a href="http://localhost:8080/index.php"><button class="btn btn-outline-secondary btn-sm">Back to list</button></a>
         </div>
       </div>
