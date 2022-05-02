@@ -77,7 +77,7 @@ CREATE TABLE `disc` (
   PRIMARY KEY (`disc_id`),
   KEY `artist_id` (`artist_id`),
   CONSTRAINT `disc_ibfk_1` FOREIGN KEY (`artist_id`) REFERENCES `artist` (`artist_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,7 +122,8 @@ INSERT INTO `disc` VALUES
 (48,'Richard D James Album',1996,'richard_d_james_album-24.jpeg','Warp Records','Electronic, Abstract, IDM, Experimental, Acid',30.00,24),
 (49,'Pretzel Logic',1974,'pretzel_logic-29.jpeg','ABC Records','Jazz-Rock, Pop-Rock, Classic Rock',22.00,29),
 (50,'Aja',1977,'aja-29.jpeg','ABC Records','Jazz-Rock, Pop-Rock, Classic Rock',15.00,29),
-(51,'Gaucho',1980,'gaucho-29.jpeg','MCA Records','Pop Rock, Jazz-Rock',19.00,29);
+(51,'Gaucho',1980,'gaucho-29.jpeg','MCA Records','Pop Rock, Jazz-Rock',19.00,29),
+(52,'Controversy',1981,'controversy-11.jpeg','Warner Bros. Records','Funk / Soul, Synth-Pop',27.00,11);
 /*!40000 ALTER TABLE `disc` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -135,4 +136,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-01 17:47:13
+-- Dump completed on 2022-05-02  6:48:41
