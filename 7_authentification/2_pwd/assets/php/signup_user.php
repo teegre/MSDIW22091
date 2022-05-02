@@ -12,7 +12,7 @@ try {
   ");
   $q->execute(array($firstname, $lastname, $email, password_hash($password, PASSWORD_BCRYPT)));
   $q->closeCursor();
-  header('Location: ../../user_login.php');
+  header('Location: ../../user_login.html');
 }
 catch (Exception $e) {
   echo $e->getMessage();
