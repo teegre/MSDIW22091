@@ -8,9 +8,17 @@
   </head>
   <body>
     <div class="container">
-       <div class="card">
-         <div class="card-body">
-           <h5 class="card-title"><b>Login</b><h5>
+    <?php 
+      require 'assets/php/utils.php';
+      session_start();
+      if (isset ($_SESSION['user'])) {
+        displayError('A session is already open for user '. $_SESSION['user']);
+        die();
+      }
+    ?>
+      <div class="card">
+        <div class="card-body">
+           <h5 class="card-title"><b>Login</b></h5>
            <form action="http://localhost:1234/assets/php/login_user.php" method="POST">
              <fieldset>
                <label for="email">User</label>

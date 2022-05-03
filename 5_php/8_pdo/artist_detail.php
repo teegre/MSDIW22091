@@ -23,11 +23,11 @@ $query->closeCursor();
       Artist ID: <?= $artist->artist_id ?><br>
       Artist Name: <?= $artist->artist_name ?><br>
       Website: <?php echo '<a href="https://' . $artist->artist_url . '">' . $artist->artist_url . '</a><br>' ?>
+      <a href="http://localhost:8080/artist_form.php?id=<?= $id ?>"><button>Edit</button></a>
+      <a href="http://localhost:8080/artist_delete.php?id=<?= $id ?>"><button>Delete</button></a>
     <?php else: ?>
       <?php echo "<b>error: artist not found.</b><br>"; ?>
     <?php endif ?>
-    <a href="http://localhost:8080/artist_form.php?id=<?= $id ?>"><button>Edit</button></a>
-    <a href="http://localhost:8080/artist_delete.php?id=<?= $id ?>"><button>Delete</button></a>
     <a href="http://localhost:8080/artists.php"><button>Back</button></a>
   </body>
 </html>
