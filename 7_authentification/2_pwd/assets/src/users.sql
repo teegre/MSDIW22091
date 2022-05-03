@@ -4,7 +4,7 @@ USE users;
 
 DROP TABLE IF EXISTS user;
 
-CREATE TABLE IF NOT EXISTS user (
+CREATE TABLE user (
   user_lastname VARCHAR(255) NOT NULL,
   user_firstname VARCHAR(255) NOT NULL,
   user_email VARCHAR(255) NOT NULL PRIMARY KEY,
