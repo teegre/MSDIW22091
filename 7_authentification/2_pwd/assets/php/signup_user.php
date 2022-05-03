@@ -27,7 +27,7 @@
         ");
         $q->execute(array($firstname, $lastname, $email, password_hash($password, PASSWORD_BCRYPT)));
         $q->closeCursor();
-        header('Location: ../../user_login.html');
+        header('Location: ../../user_login.php');
       }
       catch (Exception $e) {
         echo $e->getMessage();
