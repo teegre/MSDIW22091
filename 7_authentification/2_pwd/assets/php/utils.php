@@ -71,7 +71,7 @@ function userExists($email) {
     ');
     $q->execute(array($email));
     $r = $q->fetch(PDO::FETCH_NUM);
-    if ($r == 0) return false;
+    if ($r[0] == 0) return false;
     else return true;
   }
   catch (Exception $e) {
