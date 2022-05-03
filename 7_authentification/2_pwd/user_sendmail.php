@@ -13,32 +13,22 @@ if (! isset($_SESSION['user'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Logged In</title>
+    <title>Sendmail</title>
   </head>
   <body>
-    <?php
-      if (isset($_POST['logout'])) {
-        logout();
-        header('Location: index.html');
-      }
-    ?>
     <div class="container">
-      <div class="jumbotron mt-2">
-        <h1 class="text-success display-5">Welcome <?php echo '<b>' . $_SESSION['user'] . '</b>' ?>!</h1>
-        <hr class="my-4">
-        <p class="lead">
-          <div class="small">
-            Your session id is: <?php echo session_id() ?>.<br>
-          <div>
-        </p>
-        <div class="lead">
-          <a href="http://localhost:1234/user_sendmail.php">
-            <button class="btn btn-dark btn-block">Send e-mail</button>
-          </a><br>
-          <form method="POST">
-            <input type="submit" name="logout" class="btn btn-danger btn-block" value="Log out">
-          </form>
-        </div>
+    <div class="jumbotron mt-2">
+      <h1>Send mail</h1>
+        <form action="http://localhost:1234/assets/php/sendmail_user.php" method="POST">
+          <label class="form-label" for="recipient">Recipient</label>
+          <input class="form-control form-control-sm mb-2" type="email" id="recipient" name="recipient" placeholder="Enter e-mail address" required>
+          <label class="form-label" for="subject">Subject</label>
+          <input class="form-control form-control-sm mb-2" type="text" id="subject" name="subject" required>
+          <label class="form-label" for="message">Message</label>
+          <textarea class="form-control form-control-sm mb-2" id="message" name="message" required></textarea>
+          <input class="btn btn-sm btn-success" type="submit" value="Send">
+          <input class="btn btn-sm btn-warning" type="reset" value="Reset">
+        </form>
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -46,4 +36,3 @@ if (! isset($_SESSION['user'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
-

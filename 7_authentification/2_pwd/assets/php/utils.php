@@ -45,6 +45,13 @@ function displayError($msg, $fatal=false) {
     echo '    <a href="http://localhost:1234/user_signup.html">';
     echo '    <button class="btn btn-sm btn-danger">Sign Up</button></a>';
     echo '  </p>';
+  } else {
+    echo '<p class="lead">';
+    echo '  <a href="http://localhost:1234/user_logged.php">';
+    echo '  <button class="btn btn-sm btn-success">Continue</button></a>';
+    echo '  <a href="http://localhost:1234/assets/php/logout_user.php">';
+    echo '  <button class="btn btn-sm btn-danger">Log out</button></a>';
+    echo '</p>';
   }
   echo '</div>';
 }

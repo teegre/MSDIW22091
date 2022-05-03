@@ -12,7 +12,7 @@
       require 'assets/php/utils.php';
       session_start();
       if (isset ($_SESSION['user'])) {
-        displayError('A session is already open for user '. $_SESSION['user']);
+        displayError('A session is already opened for user '. $_SESSION['user'], true);
         die();
       }
     ?>
