@@ -27,7 +27,7 @@ CREATE TABLE `artist` (
   `artist_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `artist_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`artist_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -55,7 +55,9 @@ INSERT INTO `artist` VALUES
 (27,'My Bloody Valentine',NULL),
 (28,'Boards Of Canada',NULL),
 (29,'Steely Dan',NULL),
-(30,'The The',NULL);
+(30,'The The',NULL),
+(31,'Jim O\'Rourke','http://www.discogs.com/artist/Jim+O\'Rourke'),
+(32,'Kraftwerk',NULL);
 /*!40000 ALTER TABLE `artist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -78,7 +80,7 @@ CREATE TABLE `disc` (
   PRIMARY KEY (`disc_id`),
   KEY `artist_id` (`artist_id`),
   CONSTRAINT `disc_ibfk_1` FOREIGN KEY (`artist_id`) REFERENCES `artist` (`artist_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,7 +128,11 @@ INSERT INTO `disc` VALUES
 (51,'Gaucho',1980,'gaucho-29.jpeg','MCA Records','Pop Rock, Jazz-Rock',19.00,29),
 (52,'Controversy',1981,'controversy-11.jpeg','Warner Bros. Records','Funk / Soul, Synth-Pop',27.00,11),
 (53,'Mind Bomb',1989,'mind_bomb-30.jpeg','Epic / Some Bizarre','Alternative Rock',14.00,30),
-(54,'Dusk',1993,'dusk-30.jpeg','Epic','Alternative Rock',99.00,30);
+(54,'Dusk',1993,'dusk-30.jpeg','Epic','Alternative Rock',99.00,30),
+(55,'Simple Songs',2015,'simple_songs-31.jpeg','Drag City','Indie Rock, Experimental, Lounge, Art Rock',19.00,31),
+(56,'3-D (The Catalogue)',2017,'3-d_(the_catalogue)-32.jpeg','Kling Klang / Parlophone','Electro, Synth-Pop',200.00,32),
+(57,'Computer World',1981,'computer_world-32.jpeg','EMI','Electro, Synth-Pop',21.00,32),
+(58,'The Man Machine',1978,'the_man_machine-32.jpeg','Capitol Records','Electro, Synth-Pop',22.00,32);
 /*!40000 ALTER TABLE `disc` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -139,4 +145,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-02 20:59:57
+-- Dump completed on 2022-05-03 20:41:17
