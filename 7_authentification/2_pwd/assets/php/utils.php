@@ -33,13 +33,13 @@ function getUser($email) {
   }
 }
 
-function displayError($msg, $fatal=false) {
+function displayError($msg, $logged=false) {
   // display an error message.
   echo '<div class="jumbotron mt-2">';
   echo '  <h1 class="text-danger display-5">error</h1>';
   echo '  <hr class="my-4">';
   echo '  <p class="lead">' . $msg . '</p>';
-  if (! $fatal) {
+  if (! $logged) {
     echo '  <p class="lead">';
     echo '    <button class="btn btn-sm btn-secondary" onclick="window.history.back()">Back</button>';
     echo '    <a href="http://localhost:1234/user_signup.html">';
@@ -57,7 +57,7 @@ function displayError($msg, $fatal=false) {
 }
 
 function logout() {
-  unset($_SESSION['user']);
+  session_unset();
   if (ini_get('session.use_cookies'))
     setcookie(session_name(), '', time()-1);
   session_destroy();
@@ -67,7 +67,7 @@ function userExists($email) {
   $db = connect();
   try {
     $q = $db->prepare('
-      SELECT COUNT(*) FROM user WHERE user_email = ?
+      SELECT COUNT(*) FROM user WHERE user_email = ?;
     ');
     $q->execute(array($email));
     $r = $q->fetch(PDO::FETCH_NUM);
