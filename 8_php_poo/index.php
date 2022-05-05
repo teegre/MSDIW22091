@@ -15,7 +15,7 @@ $date_embauche = new DateTime('07-05-2017');
 $e4 = new Employe('K', 'J', $date_embauche, 'L', 789.01, 'M', $mag1);
 $date_embauche = new DateTime('18-04-1991');
 $mag = new Magasin('N', 'O', '75000', 'P');
-$e5 = new Employe('R', 'Q', $date_embauche, 'S', 65.43, 'T', $mag);
+$e5 = new Employe('N', 'M', $date_embauche, 'O', 65.43, 'T', $mag);
 
 $employes = array($e1, $e2, $e3, $e4, $e5);
 
