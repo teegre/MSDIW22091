@@ -103,25 +103,39 @@ class __TwigTemplate_7cff4009270c1454d51b76b2613cd52e extends Template
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["record"]) || array_key_exists("record", $context) ? $context["record"] : (function () { throw new RuntimeError('Variable "record" does not exist.', 22, $this->source); })()), "recordgenre", [], "any", false, false, false, 22), "html", null, true);
         echo "<br><br>
           <b>Track list:</b>
-          <ol>
-          ";
-        // line 25
+          <table class=\"table table-hover table-sm\">
+            <tbody>
+            ";
+        // line 26
+        $context["songs"] = [];
+        // line 27
+        echo "            ";
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["record"]) || array_key_exists("record", $context) ? $context["record"] : (function () { throw new RuntimeError('Variable "record" does not exist.', 25, $this->source); })()), "songs", [], "any", false, false, false, 25));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["record"]) || array_key_exists("record", $context) ? $context["record"] : (function () { throw new RuntimeError('Variable "record" does not exist.', 27, $this->source); })()), "songs", [], "any", false, false, false, 27));
         foreach ($context['_seq'] as $context["_key"] => $context["song"]) {
-            // line 26
-            echo "            <li>";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["song"], "songtitle", [], "any", false, false, false, 26), "html", null, true);
-            echo "</li>
-          ";
+            // line 28
+            echo "              <tr><td>";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["song"], "songtitle", [], "any", false, false, false, 28), "html", null, true);
+            echo "</td></tr>
+              ";
+            // line 29
+            $context["songs"] = twig_array_merge((isset($context["songs"]) || array_key_exists("songs", $context) ? $context["songs"] : (function () { throw new RuntimeError('Variable "songs" does not exist.', 29, $this->source); })()), [0 => twig_get_attribute($this->env, $this->source, $context["song"], "songtitle", [], "any", false, false, false, 29)]);
+            // line 30
+            echo "            ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['song'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 28
-        echo "          </ol>
+        // line 31
+        echo "            </tbody>
+          </table>
         </div>
-      </div>
+        ";
+        // line 42
+        echo "    <div class=\"row mt-2\">
+      <div class=\"col\">
+        <button class=\"btn btn-primary btn-sm\" onclick=\"history.back()\" >Back</button>
+        </div>
     </div>
   </div>
 ";
@@ -142,7 +156,7 @@ class __TwigTemplate_7cff4009270c1454d51b76b2613cd52e extends Template
 
     public function getDebugInfo()
     {
-        return array (  122 => 28,  113 => 26,  109 => 25,  103 => 22,  99 => 21,  95 => 20,  86 => 14,  77 => 8,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
+        return array (  135 => 42,  130 => 31,  124 => 30,  122 => 29,  117 => 28,  112 => 27,  110 => 26,  103 => 22,  99 => 21,  95 => 20,  86 => 14,  77 => 8,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -170,13 +184,28 @@ class __TwigTemplate_7cff4009270c1454d51b76b2613cd52e extends Template
           <b>Label:</b> {{ record.recordlabel }}<br>
           <b>Genre: </b>{{ record.recordgenre }}<br><br>
           <b>Track list:</b>
-          <ol>
-          {% for song in record.songs %}
-            <li>{{song.songtitle}}</li>
-          {% endfor %}
-          </ol>
+          <table class=\"table table-hover table-sm\">
+            <tbody>
+            {% set songs = [] %}
+            {% for song in record.songs %}
+              <tr><td>{{song.songtitle}}</td></tr>
+              {% set songs = songs|merge([song.songtitle]) %}
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        {#}        <div class=\"mt-auto pb-2\">
+          <a href=\"#\">
+            <button class=\"btn btn-primary btn-sm\">Add songs</button>
+            <t class=\"form-control control-sm\" type=\"textarea\" value=\"\">
+          </a>
         </div>
       </div>
+    </div> #}
+    <div class=\"row mt-2\">
+      <div class=\"col\">
+        <button class=\"btn btn-primary btn-sm\" onclick=\"history.back()\" >Back</button>
+        </div>
     </div>
   </div>
 {% endblock %}

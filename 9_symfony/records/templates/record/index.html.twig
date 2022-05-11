@@ -21,13 +21,28 @@
           <b>Label:</b> {{ record.recordlabel }}<br>
           <b>Genre: </b>{{ record.recordgenre }}<br><br>
           <b>Track list:</b>
-          <ol>
-          {% for song in record.songs %}
-            <li>{{song.songtitle}}</li>
-          {% endfor %}
-          </ol>
+          <table class="table table-hover table-sm">
+            <tbody>
+            {% set songs = [] %}
+            {% for song in record.songs %}
+              <tr><td>{{song.songtitle}}</td></tr>
+              {% set songs = songs|merge([song.songtitle]) %}
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        {#}        <div class="mt-auto pb-2">
+          <a href="#">
+            <button class="btn btn-primary btn-sm">Add songs</button>
+            <t class="form-control control-sm" type="textarea" value="">
+          </a>
         </div>
       </div>
+    </div> #}
+    <div class="row mt-2">
+      <div class="col">
+        <button class="btn btn-primary btn-sm" onclick="history.back()" >Back</button>
+        </div>
     </div>
   </div>
 {% endblock %}

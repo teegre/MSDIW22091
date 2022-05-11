@@ -80,34 +80,75 @@ class __TwigTemplate_bc15cb3bb0f17e09b2a07319c5187e56 extends Template
         echo ")</b></h1>
     </div>
     <div class=\"row\">
-      <div class=\"col-md-4 d-flex flex-row align-self-center mb-1 p-0\">
+      <div class=\"col-md-4 d-flex flex-row align-self-center m-1 p-1\">
         <img class=\"img-fluid img-thumbnail\"
              src=\"/img/";
         // line 13
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["artist"]) || array_key_exists("artist", $context) ? $context["artist"] : (function () { throw new RuntimeError('Variable "artist" does not exist.', 13, $this->source); })()), "artistimg", [], "any", false, false, false, 13), "html", null, true);
         echo "\"
+             width=\"400\"
         >
       </div>
-      <div class=\"col-md-3 d-flex flex-column ml-2 mr-1 p-0\">
-        ";
+      ";
         // line 17
+        $context["c"] = 1;
+        // line 18
+        echo "      ";
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["artist"]) || array_key_exists("artist", $context) ? $context["artist"] : (function () { throw new RuntimeError('Variable "artist" does not exist.', 17, $this->source); })()), "records", [], "any", false, false, false, 17));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["artist"]) || array_key_exists("artist", $context) ? $context["artist"] : (function () { throw new RuntimeError('Variable "artist" does not exist.', 18, $this->source); })()), "records", [], "any", false, false, false, 18));
         foreach ($context['_seq'] as $context["_key"] => $context["record"]) {
-            // line 18
-            echo "          <div class=\"img-fluid\">
-            <img src=\"/img/";
             // line 19
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["record"], "recordpicture", [], "any", false, false, false, 19), "html", null, true);
-            echo "\" width=\"200\">
-          </div>
+            echo "        ";
+            if (((isset($context["c"]) || array_key_exists("c", $context) ? $context["c"] : (function () { throw new RuntimeError('Variable "c" does not exist.', 19, $this->source); })()) == 1)) {
+                // line 20
+                echo "        <div class=\"col-md-2 d-flex flex-column m-1 p-0\">
         ";
+            }
+            // line 22
+            echo "          <a href=\"http://localhost:8000/record/";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["record"], "recordid", [], "any", false, false, false, 22), "html", null, true);
+            echo "\">
+            <img class=\"img-fluid p-1 m-0\"
+                 src=\"/img/";
+            // line 24
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["record"], "recordpicture", [], "any", false, false, false, 24), "html", null, true);
+            echo "\"
+                 width=\"200\"
+                 title=\"";
+            // line 26
+            echo twig_escape_filter($this->env, (((twig_get_attribute($this->env, $this->source, $context["record"], "recordtitle", [], "any", false, false, false, 26) . " (") . twig_get_attribute($this->env, $this->source, $context["record"], "recordyear", [], "any", false, false, false, 26)) . ")"), "html", null, true);
+            echo "\"
+            >
+          </a>
+        ";
+            // line 29
+            if (((isset($context["c"]) || array_key_exists("c", $context) ? $context["c"] : (function () { throw new RuntimeError('Variable "c" does not exist.', 29, $this->source); })()) == 2)) {
+                // line 30
+                echo "        </div>
+          ";
+                // line 31
+                $context["c"] = 1;
+                // line 32
+                echo "        ";
+            } else {
+                // line 33
+                echo "          ";
+                $context["c"] = ((isset($context["c"]) || array_key_exists("c", $context) ? $context["c"] : (function () { throw new RuntimeError('Variable "c" does not exist.', 33, $this->source); })()) + 1);
+                // line 34
+                echo "        ";
+            }
+            // line 35
+            echo "      ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['record'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 22
-        echo "      </div>
+        // line 36
+        echo "    </div>
+    <div class=\"row mt-2\">
+      <div class=\"col\">
+        <button class=\"btn btn-primary btn-sm\" onclick=\"history.back()\" >Back</button>
+        </div>
     </div>
   </div>
 ";
@@ -128,7 +169,7 @@ class __TwigTemplate_bc15cb3bb0f17e09b2a07319c5187e56 extends Template
 
     public function getDebugInfo()
     {
-        return array (  110 => 22,  101 => 19,  98 => 18,  94 => 17,  87 => 13,  77 => 8,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
+        return array (  147 => 36,  141 => 35,  138 => 34,  135 => 33,  132 => 32,  130 => 31,  127 => 30,  125 => 29,  119 => 26,  114 => 24,  108 => 22,  104 => 20,  101 => 19,  96 => 18,  94 => 17,  87 => 13,  77 => 8,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -143,18 +184,36 @@ class __TwigTemplate_bc15cb3bb0f17e09b2a07319c5187e56 extends Template
       <h1 class=\"display-4\"><b>{{ artist.artistname }} ({{ artist.records|length }})</b></h1>
     </div>
     <div class=\"row\">
-      <div class=\"col-md-4 d-flex flex-row align-self-center mb-1 p-0\">
+      <div class=\"col-md-4 d-flex flex-row align-self-center m-1 p-1\">
         <img class=\"img-fluid img-thumbnail\"
              src=\"/img/{{ artist.artistimg }}\"
+             width=\"400\"
         >
       </div>
-      <div class=\"col-md-3 d-flex flex-column ml-2 mr-1 p-0\">
-        {% for record in artist.records %}
-          <div class=\"img-fluid\">
-            <img src=\"/img/{{ record.recordpicture }}\" width=\"200\">
-          </div>
-        {% endfor %}
-      </div>
+      {% set c = 1 %}
+      {% for record in artist.records %}
+        {% if (c == 1) %}
+        <div class=\"col-md-2 d-flex flex-column m-1 p-0\">
+        {% endif %}
+          <a href=\"http://localhost:8000/record/{{ record.recordid }}\">
+            <img class=\"img-fluid p-1 m-0\"
+                 src=\"/img/{{ record.recordpicture }}\"
+                 width=\"200\"
+                 title=\"{{ \"#{ record.recordtitle } (#{ record.recordyear })\" }}\"
+            >
+          </a>
+        {% if (c == 2) %}
+        </div>
+          {% set c = 1 %}
+        {% else %}
+          {% set c = c + 1 %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class=\"row mt-2\">
+      <div class=\"col\">
+        <button class=\"btn btn-primary btn-sm\" onclick=\"history.back()\" >Back</button>
+        </div>
     </div>
   </div>
 {% endblock %}

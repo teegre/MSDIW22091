@@ -4,8 +4,13 @@
 
 {% block body %}
   <div class="container mt-4"> 
-    <div class="row mb-2">
-      <h1 class="display-4"><b>Records</b> ({{ records|length }})</h1>
+    <div class="row mb-2 align-items-center">
+      <div class="col-md-8">
+        <h1 class="display-4"><b>Records</b> ({{ records|length }})</h1>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-danger btn-sm">Add Record</button>
+      </div>
     </div>
     {% set c = 1 %}
     {% for record in records %}
