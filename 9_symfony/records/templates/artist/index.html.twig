@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ artist.artistname }}{% endblock %}
+
+{% block body %}
+  <div class="container mt-4">
+    <div class="row">
+      <h1 class="display-4"><b>{{ artist.artistname }} ({{ artist.records|length }})</b></h1>
+    </div>
+    <div class="row">
+      <div class="col-md-4 d-flex flex-row align-self-center mb-1 p-0">
+        <img class="img-fluid img-thumbnail"
+             src="/img/{{ artist.artistimg }}"
+        >
+      </div>
+      <div class="col-md-3 d-flex flex-column ml-2 mr-1 p-0">
+        {% for record in artist.records %}
+          <div class="img-fluid">
+            <img src="/img/{{ record.recordpicture }}" width="200">
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

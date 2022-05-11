@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ "#{record.artistid.artistname}: #{record.recordtitle}" }}{% endblock %}
+
+{% block body %}
+  <div class="container mt-4">
+    <div class="row">
+      <h1 class="display-4"><b>{{ "#{record.artistid.artistname}: #{record.recordtitle}" }}</b></h1>
+    </div>
+    <div class="row">
+      <div class="col-md-4 d-flex flex-row align-self-start mb-1 mr-2 p-0">
+        <div class="mb-auto">
+          <img class="img-fluid img-thumbnail p-1"
+               src="/img/{{ record.recordpicture }}"
+          >
+        </div>
+      </div>
+      <div class="col-md-5 d-flex flex-column ml-3 mr-1 p-1">
+        <div class="small">
+          <b>Year:</b> {{ record.recordyear }}<br>
+          <b>Label:</b> {{ record.recordlabel }}<br>
+          <b>Genre: </b>{{ record.recordgenre }}<br><br>
+          <b>Track list:</b>
+          <ol>
+          {% for song in record.songs %}
+            <li>{{song.songtitle}}</li>
+          {% endfor %}
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
