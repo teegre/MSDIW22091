@@ -19,6 +19,7 @@ class Artist
     private $artist_name;
 
     #[ORM\OneToMany(mappedBy: 'artist_id', targetEntity: Record::class)]
+    #[ORM\OrderBy( ['record_year' => 'ASC'])]
     private $records;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]

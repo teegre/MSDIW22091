@@ -202,7 +202,14 @@ INSERT INTO `song` VALUES
 (27,6,'Enjoy The Silene'),
 (27,7,'Policy Of Truth'),
 (27,8,'Blue Dress'),
-(27,9,'Clean');
+(27,9,'Clean'),
+(50,4,'Peg'),
+(50,3,'Deacon Blues'),
+(50,2,'Aja'),
+(50,1,'Black Cow'),
+(50,5,'Home At Last'),
+(50,6,'I Got The News'),
+(50,7,'Josie');
 /*!40000 ALTER TABLE `song` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -215,4 +222,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-13 11:36:01
+-- Dump completed on 2022-05-13 12:13:00
