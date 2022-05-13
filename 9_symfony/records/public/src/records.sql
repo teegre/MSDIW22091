@@ -80,7 +80,7 @@ CREATE TABLE `record` (
   PRIMARY KEY (`record_id`),
   KEY `IDX_9B349F91B7970CF8` (`artist_id`),
   CONSTRAINT `record_idfk_1` FOREIGN KEY (`artist_id`) REFERENCES `artist` (`artist_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,7 +135,8 @@ INSERT INTO `record` VALUES
 (58,'The Man Machine',1978,'the_man_machine-32.jpeg','Capitol Records','Electro, Synth-Pop',22,32),
 (59,'I Care Because You Do...',1995,'i_care_because_you_do.jpeg','Warp Records','Electronic, IDM, Abstract, Techno, Downtempo',9.99,24),
 (60,'Chiastic slide',1997,'R-19628-1533223423-8931-627e1c00b35bc.jpg','Warp Records','Electronic, Abstract, IDM',66.5,23),
-(61,'Trans Canada Highway',2006,'R-694551-1301387402-627e1e2aa5d30.jpg','Warp Records','Electronic, IDM, Downtempo, Ambient',34.99,28);
+(61,'Trans Canada Highway',2006,'R-694551-1301387402-627e1e2aa5d30.jpg','Warp Records','Electronic, IDM, Downtempo, Ambient',34.99,28),
+(62,'In A Beautiful Place Out In The Country',2000,'R-11777-1201436908-627e25f093778.jpg','Warp Records','Electronic, IDM, Ambient',25.99,28);
 /*!40000 ALTER TABLE `record` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -214,4 +215,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-13 11:29:38
+-- Dump completed on 2022-05-13 11:36:01
