@@ -4,12 +4,24 @@
 
 {% block body %}
   <div class="container mt-4"> 
+    {% for notification in app.flashes('notify-error') %}
+      <div class="alert alert-danger">
+        {{ notification }}
+      </div>
+    {% endfor %}
+    {% for notification in app.flashes('notify') %}
+      <div class="alert alert-success">
+        {{ notification }}
+      </div>
+    {% endfor %}
     <div class="row mb-2 align-items-center">
       <div class="col-md-8">
         <h1 class="display-4"><b>Records</b> ({{ records|length }})</h1>
       </div>
       <div class="col-md-2">
-        <button class="btn btn-danger btn-sm">Add Record</button>
+        <a href="http://localhost:8000/add/record">
+          <button class="btn btn-danger btn-sm">Add Record</button>
+        </a>
       </div>
     </div>
     {% set c = 1 %}

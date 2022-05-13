@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Velvet Records - Add Record{% endblock %}
+
+{% block body %}
+  <div class="container mt-4">
+    <div class="row mb-2 align-items-center">
+      <div class="col-md-8">
+        <h1 class="display-4"><b>Add Record</b></h1>
+      </div>
+      <div class="col">
+        <button class="btn btn-primary btn-sm" onclick="history.back()">Back</button>
+      </div>
+    </div>
+    {{ form(form) }}
+    {{ form_end(form) }}
+  </div>
+{% endblock %}

@@ -9,12 +9,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RecordController extends AbstractController
 {
-    #[Route('/record/{id}', name: 'app_record', methods: ['GET', 'HEAD'])]
-    public function index(int $id, RecordRepository $recordRepository): Response
-    {
-        return $this->render('record/index.html.twig', [
-          'controller_name' => 'RecordController',
-          'record' => $recordRepository->find($id)
-        ]);
-    }
+  #[Route('/record/{id}', name: 'app_record', methods: ['GET', 'HEAD'])]
+  public function index(int $id, RecordRepository $recordRepository): Response
+  {
+    return $this->render('record/index.html.twig', [
+      'controller_name' => 'RecordController',
+      'record' => $recordRepository->find($id)
+    ]);
+  }
 }

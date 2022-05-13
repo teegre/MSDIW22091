@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Entity\Artist;
-// use App\Entity\Record;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\OptimisticLockException;

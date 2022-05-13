@@ -14,7 +14,6 @@ class ArtistsController extends AbstractController
     {
       $artists = $artistRepository->fetchAll();
       return $this->render('artists/index.html.twig', [
-        'controller_name' => 'ArtistsController',
         'artists' => $artists,
       ]);
     }
