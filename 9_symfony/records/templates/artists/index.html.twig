@@ -12,18 +12,13 @@
       {% if (c == 1) %}
         <div class="row">
       {% endif %}
-          <div class="col-lg-3">
-            <p>
-              <h5>ID: {{ artist.artistid }}</h5>
-              <b>{{ artist.artistname }}</b><br>
-              <a href="http://localhost:8000/artist/{{ artist.artistid }}">
-                <button class="btn btn-primary btn-sm mt-2">
-                  Details
-                </button>
-              </a>
-            </p>
+          <div class="col-lg-4 mb-2">
+            <div class="small"><b>{{ artist.artistname }}</b></div>
+            <a href="http://localhost:8000/artist/{{ artist.artistid }}">
+              <img class="img img-thumbnail" src="/img/{{ artist.artistimg }}" width="100">
+            </a>
           </div>
-      {% if (c == 4) %}
+      {% if (c == 3) %}
         </div>
         {% set c = 1 %}
       {% else %}
