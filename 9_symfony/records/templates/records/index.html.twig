@@ -18,7 +18,7 @@
       <div class="col-md-8">
         <h1 class="display-4"><b>Records</b> ({{ records|length }})</h1>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 text-right">
         <a href="http://localhost:8000/add/record">
           <button class="btn btn-danger btn-sm">Add Record</button>
         </a>
@@ -43,7 +43,7 @@
       <div class="col-md-3 d-flex flex-column ml-2 mr-1 p-0">
         <b>{{ record.recordtitle }}</b>
         <div class="small">
-          <b>{{ record.artistid.artistname }}</b><br>
+          <a href="http://localhost:8000/artist/{{ record.artistid.artistid }}"><b>{{ record.artistid.artistname }}</b></a><br>
           <b>Label: </b> {{ record.recordlabel }}<br>
           <b>Year: </b> {{ record.recordyear }}<br>
           <b>Genre: </b> {{ record.recordgenre }}<br>

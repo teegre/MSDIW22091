@@ -4,8 +4,25 @@
 
 {% block body %}
   <div class="container mt-4">
-    <div class="row mb-2">
-      <h1 class="display-4"><b>Artists</b> ({{ artists|length }})</h1>
+    {% for notification in app.flashes('notify-error') %}
+      <div class="alert alert-danger">
+        {{ notification }}
+      </div>
+    {% endfor %}
+    {% for notification in app.flashes('notify') %}
+      <div class="alert alert-success">
+        {{ notification }}
+      </div>
+    {% endfor %}
+    <div class="row mb-2 align-items-center">
+      <div class="col-md-8">
+        <h1 class="display-4"><b>Artists</b> ({{ artists|length }})</h1>
+      </div>
+      <div class="col-md-2 text-right">
+        <a href="http://localhost:8000/add/artist">
+          <button class="btn btn-danger btn-sm">Add Artist</button>
+        </a>
+      </div>
     </div>
     {% set c = 1 %}
     {% for artist in artists %}

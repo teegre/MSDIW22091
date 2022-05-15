@@ -9,12 +9,11 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AddRecordController extends AbstractController
 {
     #[Route('/add/record', name: 'app_add_record')]
-    public function index(Request $request, ManagerRegistry $doctrine, SluggerInterface $slugger): Response
+    public function index(Request $request, ManagerRegistry $doctrine): Response
     {
         $record = new Record();
 
@@ -22,16 +21,12 @@ class AddRecordController extends AbstractController
 
         $form->handleRequest($request);
 
-        $record = $form->getData();
-
         if ($form->isSubmitted() && $form->isValid()) {
-
+          $record = $form->getData();
           $picture = $form->get('record_picture')->getData();
 
           if ($picture) {
-            $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
-            $safeFilename = $slugger->slug($originalFilename);
-            $newFilename = $safeFilename.'-'.uniqid().'.'.$picture->guessExtension();
+            $newFilename = strtolower($form->get('record_title')->getData()).$picture->guessExtension();
           }
 
           try {

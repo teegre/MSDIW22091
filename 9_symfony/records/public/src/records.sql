@@ -27,7 +27,7 @@ CREATE TABLE `artist` (
   `artist_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `artist_img` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`artist_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,27 +37,29 @@ CREATE TABLE `artist` (
 LOCK TABLES `artist` WRITE;
 /*!40000 ALTER TABLE `artist` DISABLE KEYS */;
 INSERT INTO `artist` VALUES
-(1,'Neil Young',NULL),
-(4,'Queens Of The Stone Age',NULL),
+(1,'Neil Young','1.jpg'),
+(4,'Queens Of The Stone Age','4.jpg'),
 (11,'Prince','11.jpeg'),
 (12,'Depeche Mode','12.jpeg'),
 (14,'The Cure','14.jpeg'),
 (15,'Sepultura','15.jpeg'),
 (16,'Pink Floyd','16.jpeg'),
-(17,'Talking Heads',NULL),
-(19,'Brian Eno',NULL),
-(21,'Roxy Music',NULL),
-(22,'Radiohead',NULL),
+(17,'Talking Heads','17.jpg'),
+(19,'Brian Eno','19.jpg'),
+(21,'Roxy Music','21.jpg'),
+(22,'Radiohead','22.jpg'),
 (23,'Autechre','23.jpeg'),
 (24,'Aphex Twin','24.jpeg'),
 (25,'Cocteau Twins','25.png'),
-(26,'Pixies',NULL),
+(26,'Pixies','26.jpg'),
 (27,'My Bloody Valentine','27.jpeg'),
 (28,'Boards Of Canada','28.jpeg'),
 (29,'Steely Dan','29.jpeg'),
 (30,'The The','30.jpeg'),
-(31,'Jim O\'Rourke',NULL),
-(32,'Kraftwerk','32.jpeg');
+(31,'Jim O\'Rourke','31.jpg'),
+(32,'Kraftwerk','32.jpeg'),
+(33,'Tigerfreq','profile-627f7382c0408.jpg'),
+(34,'The House Of Love','the house of lovejpg');
 /*!40000 ALTER TABLE `artist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,7 +82,7 @@ CREATE TABLE `record` (
   PRIMARY KEY (`record_id`),
   KEY `IDX_9B349F91B7970CF8` (`artist_id`),
   CONSTRAINT `record_idfk_1` FOREIGN KEY (`artist_id`) REFERENCES `artist` (`artist_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -136,7 +138,10 @@ INSERT INTO `record` VALUES
 (59,'I Care Because You Do...',1995,'i_care_because_you_do.jpeg','Warp Records','Electronic, IDM, Abstract, Techno, Downtempo',9.99,24),
 (60,'Chiastic slide',1997,'R-19628-1533223423-8931-627e1c00b35bc.jpg','Warp Records','Electronic, Abstract, IDM',66.5,23),
 (61,'Trans Canada Highway',2006,'R-694551-1301387402-627e1e2aa5d30.jpg','Warp Records','Electronic, IDM, Downtempo, Ambient',34.99,28),
-(62,'In A Beautiful Place Out In The Country',2000,'R-11777-1201436908-627e25f093778.jpg','Warp Records','Electronic, IDM, Ambient',25.99,28);
+(62,'In A Beautiful Place Out In The Country',2000,'R-11777-1201436908-627e25f093778.jpg','Warp Records','Electronic, IDM, Ambient',25.99,28),
+(63,'Can\'t Buy A Thrill',1972,'cover-627f471918670.jpg','Probe','Classic Rock',29.99,29),
+(64,'Astres',2018,'cover-627f75997a688.jpg','None','Electronic, Ambient',570.83,33),
+(65,'The House Of Love',1990,'the house of lovejpg','Fontana','Rock, Indie Rock',24.99,34);
 /*!40000 ALTER TABLE `record` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,7 +214,14 @@ INSERT INTO `song` VALUES
 (50,1,'Black Cow'),
 (50,5,'Home At Last'),
 (50,6,'I Got The News'),
-(50,7,'Josie');
+(50,7,'Josie'),
+(64,1,'Part I'),
+(64,2,'Part II'),
+(64,3,'Part III'),
+(64,4,'Part IIII'),
+(64,5,'Part V'),
+(64,6,'Part VI'),
+(64,7,'Part VII');
 /*!40000 ALTER TABLE `song` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -222,4 +234,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-13 12:13:00
+-- Dump completed on 2022-05-15 10:08:27
