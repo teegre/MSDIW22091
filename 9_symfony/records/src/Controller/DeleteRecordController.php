@@ -17,7 +17,7 @@ class DeleteRecordController extends AbstractController
           $recordRepository->remove($record, true);
           $this->addFlash('notify', 'Record successfully deleted');
         } else {
-          $this->addFlash('notify-error', 'Could not find record with id = '.$id);
+          $this->addFlash('notify-error', 'Could not find record id = '.$id);
         }
 
         return $this->redirectToRoute('app_records');

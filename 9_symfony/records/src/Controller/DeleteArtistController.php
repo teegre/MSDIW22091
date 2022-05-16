@@ -17,7 +17,7 @@ class DeleteArtistController extends AbstractController
         $artistRepository->remove($artist, true);
         $this->addFlash('notify', 'Artist successfully deleted.');
       } else {
-        $this->addFlash('notify-error', 'Artist not found (id :'.$id.')');
+        $this->addFlash('notify-error', 'Could not find artist id = '.$id.')');
       }
 
       return $this->redirectToRoute('app_artists');
