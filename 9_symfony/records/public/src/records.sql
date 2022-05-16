@@ -27,7 +27,7 @@ CREATE TABLE `artist` (
   `artist_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `artist_img` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`artist_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -58,11 +58,11 @@ INSERT INTO `artist` VALUES
 (30,'The The','30.jpeg'),
 (31,'Jim O\'Rourke','31.jpg'),
 (32,'Kraftwerk','32.jpeg'),
-(33,'Tigerfreq','profile-627f7382c0408.jpg'),
 (34,'The House Of Love','the_house_of_love.jpg'),
 (35,'Tangerine Dream','tangerine_dream.jpg'),
 (36,'Peter Gabriel','peter_gabriel.jpg'),
-(37,'Terence Trent D\'Arby','terence_trent_d\'arby.jpg');
+(37,'Terence Trent D\'Arby','terence_trent_d\'arby.jpg'),
+(38,'The Smile','the_smile.jpg');
 /*!40000 ALTER TABLE `artist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,7 +85,7 @@ CREATE TABLE `record` (
   PRIMARY KEY (`record_id`),
   KEY `IDX_9B349F91B7970CF8` (`artist_id`),
   CONSTRAINT `record_idfk_1` FOREIGN KEY (`artist_id`) REFERENCES `artist` (`artist_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -143,14 +143,14 @@ INSERT INTO `record` VALUES
 (61,'Trans Canada Highway',2006,'R-694551-1301387402-627e1e2aa5d30.jpg','Warp Records','Electronic, IDM, Downtempo, Ambient',34.99,28),
 (62,'In A Beautiful Place Out In The Country',2000,'R-11777-1201436908-627e25f093778.jpg','Warp Records','Electronic, IDM, Ambient',25.99,28),
 (63,'Can\'t Buy A Thrill',1972,'cover-627f471918670.jpg','Probe','Classic Rock',29.99,29),
-(64,'Astres',2018,'cover-627f75997a688.jpg','None','Electronic, Ambient',570.83,33),
 (65,'The House Of Love',1990,'the_house_of_love-34.jpg','Fontana','Rock, Indie Rock',24.99,34),
 (66,'Rubycon',1975,'rubycon-35.jpg','Virgin','Electronic, Ambient',9.99,35),
 (67,'Trans Europe Express',1977,'trans_europe_express-32.jpg','Capitol Records','Electronic, Synth-Pop',19.99,32),
 (68,'So',1986,'so-36.jpg','Virgin','Rock, Pop',9.99,36),
-(69,'Soon',2021,'soon-33.png','None','Electronic',9.99,33),
 (70,'Introducing The Hardline According To Terence Trent D\'Arby',1987,'introducing_the_hardline_according_to_terence_trent_d\'arby-37.jpg','CBS','Funk / Soul, Blues, R&B',4.99,37),
-(71,'Lullabies To Paralyze',2005,'lullabies_to_paralyze-4.jpg','Interscope Records','Indie Rock',14.99,4);
+(71,'Lullabies To Paralyze',2005,'lullabies_to_paralyze-4.jpg','Interscope Records','Indie Rock',14.99,4),
+(72,'A Moon Shaped Pool',2016,'a_moon_shaped_pool-22.jpg','XL Recordings','Art Rock, Indie Rock, Ambient, Experimental',34.99,22),
+(73,'A Light For Attracting Attention',2022,'a_light_for_attracting_attention-38.jpg','XL Recordings','Alternative Rock, Indie Rock',24.99,38);
 /*!40000 ALTER TABLE `record` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -176,61 +176,6 @@ CREATE TABLE `song` (
 
 LOCK TABLES `song` WRITE;
 /*!40000 ALTER TABLE `song` DISABLE KEYS */;
-INSERT INTO `song` VALUES
-(19,1,'Christopher Tracy\'s Parade'),
-(19,2,'New Position'),
-(19,3,'I Wonder U'),
-(19,4,'Under The Cherry Moon'),
-(19,5,'Girls & Boys'),
-(19,6,'Life Can Be So Nice'),
-(19,7,'Venus De Milo'),
-(19,8,'Mountains'),
-(19,9,'Do U Lie?'),
-(19,10,'Kiss'),
-(19,11,'Anotherloverholenyohead'),
-(19,12,'Sometimes It Snows In April'),
-(55,1,'Friends With Benefits'),
-(55,2,'That Weekend'),
-(55,3,'Half Life Crisis'),
-(55,4,'Hotel Blue'),
-(55,5,'These Hands'),
-(55,6,'Last Year'),
-(55,7,'End Of The Road'),
-(55,8,'All Your Love'),
-(46,1,'Only Shallow'),
-(46,2,'Loomer'),
-(46,3,'Touch'),
-(46,4,'To Here Knows When'),
-(46,5,'When You Sleep'),
-(46,6,'I Only Said'),
-(46,7,'Come In Alone'),
-(46,8,'Sometimes'),
-(46,9,'Blown A Wish'),
-(46,10,'What You Want'),
-(46,11,'Soon'),
-(27,1,'World In My Eyes'),
-(27,2,'Sweetest Perfection'),
-(27,3,'Personal Jesus'),
-(27,4,'Halo'),
-(27,5,'Waiting For The Night'),
-(27,6,'Enjoy The Silene'),
-(27,7,'Policy Of Truth'),
-(27,8,'Blue Dress'),
-(27,9,'Clean'),
-(50,4,'Peg'),
-(50,3,'Deacon Blues'),
-(50,2,'Aja'),
-(50,1,'Black Cow'),
-(50,5,'Home At Last'),
-(50,6,'I Got The News'),
-(50,7,'Josie'),
-(64,1,'Part I'),
-(64,2,'Part II'),
-(64,3,'Part III'),
-(64,4,'Part IIII'),
-(64,5,'Part V'),
-(64,6,'Part VI'),
-(64,7,'Part VII');
 /*!40000 ALTER TABLE `song` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -243,4 +188,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-16 12:55:59
+-- Dump completed on 2022-05-16 16:49:26
