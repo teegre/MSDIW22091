@@ -4,6 +4,11 @@
 
 {% block body %}
   <div class="container mt-4">
+    {% for notification in app.flashes('notify-error') %}
+      <div class="alert alert-danger">
+        {{ notification }}
+      </div>
+    {% endfor %}
     <div class="row align-items-center">
       <div class="col-md-8">
         <h1><b>Add Artist</b></h1>
@@ -13,21 +18,19 @@
       </div>
     </div>
     {{ form_start(form) }}
-      {{ form_errors(form) }}
       <div class="mb-2">
         {{ form_label(form.artist_name, null, {
-          'label': 'Name',
           'label_attr': {
-            'class': 'form-label form-label-sm' 
+            'class': 'col-form-label-sm' 
           }
         }) }}
         {{ form_widget(form.artist_name, {'attr': {'class': 'form-control form-control-sm'}}) }}
       </div>
       <div class="mb-2">
+        {{ form_errors(form) }}
         {{ form_label (form.artist_img, null, {
-          'label': 'Picture',
           'label_attr': {
-            'class': 'form-label form-label-sm'
+            'class': 'col-form-label-sm'
           }
         }) }}
         {{ form_widget(form.artist_img, {

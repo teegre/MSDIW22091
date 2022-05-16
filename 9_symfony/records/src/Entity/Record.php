@@ -39,6 +39,7 @@ class Record
 
     #[ORM\OneToMany(mappedBy: 'record_id', targetEntity: Song::class, orphanRemoval: true)]
     #[ORM\JoinColumn(name: 'record_id', referencedColumnName: 'record_id')]
+    #[ORM\OrderBy(['song_id' => 'ASC'])]
     private $songs;
 
     public function __construct()

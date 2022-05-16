@@ -13,7 +13,6 @@ class ArtistController extends AbstractController
   {
 
     return $this->render('artist/index.html.twig', [
-    'controller_name' => 'ArtistController',
     'artist' => $artistRepository->find($id)
     ]);
   }

@@ -13,7 +13,7 @@ class Song
     #[ORM\Column(type: 'integer')]
     private $song_id;
 
-    #[ORM\ManyToOne(targetEntity: Record::class, inversedBy: 'songs')]
+    #[ORM\ManyToOne(targetEntity: Record::class, inversedBy: 'songs', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(name: 'record_id', referencedColumnName: 'record_id', nullable: false)]
     private $record_id;
 

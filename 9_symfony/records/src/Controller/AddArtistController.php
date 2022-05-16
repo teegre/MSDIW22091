@@ -24,6 +24,7 @@ class AddArtistController extends AbstractController
       $form = $this->createFormBuilder($artist)
         ->add('artist_name', TextType::class, [ 'label' => 'Name' ])
         ->add('artist_img', FileType::class, [
+          'label' => 'Picture',
           'mapped' => false,
           'required' => true,
           'constraints' => [
@@ -46,7 +47,8 @@ class AddArtistController extends AbstractController
         $artist = $form->getData();
         $picture = $form->get('artist_img')->getData();
         if ($picture) {
-          $newFilename = strtolower($form->get('artist_name')->getData()).$picture->guessExtension();
+          $filename = strtolower($form->get('artist_name')->getData());
+          $newFilename = str_replace(' ', '_', $filename).'.'.$picture->guessExtension();
         }
 
         try {
@@ -56,7 +58,7 @@ class AddArtistController extends AbstractController
           );
         } catch (FileException $e) {
           $this->addFlash('notify-error', $e->getMessage());
-          die();
+          return $this->redirectToRoute('app_artists');
         }
 
         $artist->setArtistImg($newFilename);

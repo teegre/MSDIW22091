@@ -26,7 +26,8 @@ class AddRecordController extends AbstractController
           $picture = $form->get('record_picture')->getData();
 
           if ($picture) {
-            $newFilename = strtolower($form->get('record_title')->getData()).$picture->guessExtension();
+            $filename = strtolower($form->get('record_title')->getData());
+            $newFilename = str_replace(' ', '_', $filename).'-'.$form->get('artist_id')->getData()->getArtistId().'.'.$picture->guessExtension();
           }
 
           try {
@@ -36,7 +37,7 @@ class AddRecordController extends AbstractController
             );
           } catch (FileException $e) {
             $this->addFlash('notify-error', $e->getMessage());
-            die();
+            return $this->redirectToRoute('app_records');
           }
 
           $record->setRecordPicture($newFilename);

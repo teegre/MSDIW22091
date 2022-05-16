@@ -27,7 +27,7 @@ CREATE TABLE `artist` (
   `artist_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `artist_img` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`artist_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -59,7 +59,10 @@ INSERT INTO `artist` VALUES
 (31,'Jim O\'Rourke','31.jpg'),
 (32,'Kraftwerk','32.jpeg'),
 (33,'Tigerfreq','profile-627f7382c0408.jpg'),
-(34,'The House Of Love','the house of lovejpg');
+(34,'The House Of Love','the_house_of_love.jpg'),
+(35,'Tangerine Dream','tangerine_dream.jpg'),
+(36,'Peter Gabriel','peter_gabriel.jpg'),
+(37,'Terence Trent D\'Arby','terence_trent_d\'arby.jpg');
 /*!40000 ALTER TABLE `artist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,7 +85,7 @@ CREATE TABLE `record` (
   PRIMARY KEY (`record_id`),
   KEY `IDX_9B349F91B7970CF8` (`artist_id`),
   CONSTRAINT `record_idfk_1` FOREIGN KEY (`artist_id`) REFERENCES `artist` (`artist_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,7 +144,13 @@ INSERT INTO `record` VALUES
 (62,'In A Beautiful Place Out In The Country',2000,'R-11777-1201436908-627e25f093778.jpg','Warp Records','Electronic, IDM, Ambient',25.99,28),
 (63,'Can\'t Buy A Thrill',1972,'cover-627f471918670.jpg','Probe','Classic Rock',29.99,29),
 (64,'Astres',2018,'cover-627f75997a688.jpg','None','Electronic, Ambient',570.83,33),
-(65,'The House Of Love',1990,'the house of lovejpg','Fontana','Rock, Indie Rock',24.99,34);
+(65,'The House Of Love',1990,'the_house_of_love-34.jpg','Fontana','Rock, Indie Rock',24.99,34),
+(66,'Rubycon',1975,'rubycon-35.jpg','Virgin','Electronic, Ambient',9.99,35),
+(67,'Trans Europe Express',1977,'trans_europe_express-32.jpg','Capitol Records','Electronic, Synth-Pop',19.99,32),
+(68,'So',1986,'so-36.jpg','Virgin','Rock, Pop',9.99,36),
+(69,'Soon',2021,'soon-33.png','None','Electronic',9.99,33),
+(70,'Introducing The Hardline According To Terence Trent D\'Arby',1987,'introducing_the_hardline_according_to_terence_trent_d\'arby-37.jpg','CBS','Funk / Soul, Blues, R&B',4.99,37),
+(71,'Lullabies To Paralyze',2005,'lullabies_to_paralyze-4.jpg','Interscope Records','Indie Rock',14.99,4);
 /*!40000 ALTER TABLE `record` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,4 +243,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-15 10:08:27
+-- Dump completed on 2022-05-16 12:55:59

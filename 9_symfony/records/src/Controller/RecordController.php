@@ -13,7 +13,6 @@ class RecordController extends AbstractController
   public function index(int $id, RecordRepository $recordRepository): Response
   {
     return $this->render('record/index.html.twig', [
-      'controller_name' => 'RecordController',
       'record' => $recordRepository->find($id)
     ]);
   }
