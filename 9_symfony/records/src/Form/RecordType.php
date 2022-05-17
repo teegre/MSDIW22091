@@ -104,6 +104,7 @@ class RecordType extends AbstractType
                     'image/jpeg',
                     'image/jpg',
                     'image/png',
+                    'image/webp',
                   ],
                   'mimeTypesMessage' => 'Please upload a valid image file',
                 ])

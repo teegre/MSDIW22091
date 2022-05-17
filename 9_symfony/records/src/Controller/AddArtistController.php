@@ -34,6 +34,7 @@ class AddArtistController extends AbstractController
                 'image/jpeg',
                 'image/jpg',
                 'image/png',
+                'image/webp',
               ],
               'mimeTypesMessage' => 'Please upload a valid image file',
             ])
