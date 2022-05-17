@@ -27,7 +27,7 @@ CREATE TABLE `artist` (
   `artist_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `artist_img` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`artist_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +62,8 @@ INSERT INTO `artist` VALUES
 (35,'Tangerine Dream','tangerine_dream.jpg'),
 (36,'Peter Gabriel','peter_gabriel.jpg'),
 (37,'Terence Trent D\'Arby','terence_trent_d\'arby.jpg'),
-(38,'The Smile','the_smile.jpg');
+(38,'The Smile','the_smile.jpg'),
+(39,'UMAL115','umal115.jpg');
 /*!40000 ALTER TABLE `artist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,7 +86,7 @@ CREATE TABLE `record` (
   PRIMARY KEY (`record_id`),
   KEY `IDX_9B349F91B7970CF8` (`artist_id`),
   CONSTRAINT `record_idfk_1` FOREIGN KEY (`artist_id`) REFERENCES `artist` (`artist_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,7 +151,11 @@ INSERT INTO `record` VALUES
 (70,'Introducing The Hardline According To Terence Trent D\'Arby',1987,'introducing_the_hardline_according_to_terence_trent_d\'arby-37.jpg','CBS','Funk / Soul, Blues, R&B',4.99,37),
 (71,'Lullabies To Paralyze',2005,'lullabies_to_paralyze-4.jpg','Interscope Records','Indie Rock',14.99,4),
 (72,'A Moon Shaped Pool',2016,'a_moon_shaped_pool-22.jpg','XL Recordings','Art Rock, Indie Rock, Ambient, Experimental',34.99,22),
-(73,'A Light For Attracting Attention',2022,'a_light_for_attracting_attention-38.jpg','XL Recordings','Alternative Rock, Indie Rock',24.99,38);
+(73,'A Light For Attracting Attention',2022,'a_light_for_attracting_attention-38.jpg','XL Recordings','Alternative Rock, Indie Rock',24.99,38),
+(74,'Organic Workshop Vol. I',2012,'organic_workshop_vol._i-39.jpg','None Records','Drone Metal, Dark Ambient',24.99,39),
+(75,'Organic Workshop Vol. II',2012,'organic_workshop_vol._ii-39.jpg','None Records','Drone Metal, Dark Ambient, Noise, Experimental',24.99,39),
+(76,'3',2012,'3-39.jpg','None Records','Drone Metal, Dark Ambient',24.99,39),
+(77,'3-II',2012,'3-ii-39.jpg','None Records','Drone Metal, Dark Ambient',24.99,39);
 /*!40000 ALTER TABLE `record` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -188,4 +193,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-16 16:49:26
+-- Dump completed on 2022-05-17  6:47:07
