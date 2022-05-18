@@ -63,6 +63,7 @@ class EditRecordController extends AbstractController
         ->getForm();
 
       $form->handleRequest($request);
+
       if ($form->isSubmitted() && $form->isValid()) {
         $record = $form->getData();
         $picture = $form->get('record_picture')->getData();
@@ -83,6 +84,7 @@ class EditRecordController extends AbstractController
           $record->setRecordPicture($newFilename);
         }
 
+        $entityManager->persist($record);
         $entityManager->flush();
         $this->addFlash('notify', 'Record updated successfully');
         return $this->redirectToRoute('app_records');
