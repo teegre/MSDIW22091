@@ -12,8 +12,15 @@ class RecordController extends AbstractController
   #[Route('/record/{id}', name: 'app_record', methods: ['GET', 'HEAD'])]
   public function index(int $id, RecordRepository $recordRepository): Response
   {
-    return $this->render('record/index.html.twig', [
-      'record' => $recordRepository->find($id)
-    ]);
+    $record = $recordRepository->find($id);
+
+    if ($record) {
+      return $this->render('record/index.html.twig', [
+        'record' => $record,
+      ]);
+    } else {
+      $this->addFlash('notify-error', 'Could not find a record with id: '.$id);
+      return $this->redirectToRoute('app_records');
+    }
   }
 }

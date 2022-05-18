@@ -12,7 +12,6 @@
         <button class="btn btn-primary btn-sm" onclick="history.back()">Back</button>
       </div>
       <div class="mb-2">
-      {% form_theme form 'foundation_5_layout.html.twig' %}
       {{ form_start(form) }}
       <img class="img-fluid img-thumbnail" src="/img/{{ picture }}"width="200"><br>
         {{ form_label(form.record_title, 'Title', {
@@ -44,7 +43,6 @@
         {{ form_widget(form.record_year, {
           'attr': {
             'class': 'form-control form-control-sm',
-            'pattern': '^[0-9]{4}',
           }
         }) }}
         {{ form_label(form.record_label, 'Label', {
@@ -90,6 +88,7 @@
           'attr': {
             'class': 'form-control form-control-sm',
             'onchange': 'updatePicture()',
+            'onload' : 'updatePicture()',
           }
         }) }}
       </div>
@@ -111,6 +110,7 @@
           ) }}
         </div>
       </div>
+    {{ form_end(form) }}
     </div> 
   </div>
   <script src="/js/script.js"></script>

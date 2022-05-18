@@ -19,7 +19,7 @@ class Artist
     private $artist_name;
 
     #[ORM\OneToMany(targetEntity: Record::class, mappedBy: 'artist_id', orphanRemoval: true, cascade: ['persist', 'remove'])]
-    #[ORM\OrderBy( ['record_year' => 'ASC'])]
+    #[ORM\OrderBy(['record_year' => 'ASC'])]
     private $records;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]

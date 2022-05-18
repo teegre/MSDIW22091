@@ -11,6 +11,8 @@
       Velvet Records is an application to manage a <em>record collection</em>.
     </p>
     <hr class="my-4">
+      {% set route = app.request.attributes.get('_route')%}
+      <p>Route: {{ route }}</p>
       <p>Press start to start!</p>
     <p class="lead">
       <a class="btn btn-primary btn-lg" href="http://localhost:8000/artists" role="button">Start</a>

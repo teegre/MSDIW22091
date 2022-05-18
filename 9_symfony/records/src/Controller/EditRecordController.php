@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,10 +22,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class EditRecordController extends AbstractController
 {
   #[Route('/record/{id}/edit', name: 'app_edit_record')]
-  public function index(Request $request, int $id, ManagerRegistry $doctrine): Response
+  public function index(Request $request, int $id, EntityManagerInterface $em): Response
   {
-    $entityManager = $doctrine->getManager();
-    $record = $entityManager->getRepository(Record::class)->find($id);
+    $record = $em->find(Record::class, $id);
 
     if ($record) {
       $form = $this->createFormBuilder($record)
@@ -69,7 +68,7 @@ class EditRecordController extends AbstractController
         $picture = $form->get('record_picture')->getData();
         if ($picture) {
           $filename = strtolower($form->get('record_title')->getData());
-          $newFilename = str_replace(' ', '-', $filename).'-'.$record->getArtistId().'.'.$picture->guessExtension();
+          $newFilename = str_replace(' ', '_', $filename).'-'.$record->getArtistId()->getArtistId().'.'.$picture->guessExtension();
 
           try {
             $picture->move(
@@ -84,11 +83,19 @@ class EditRecordController extends AbstractController
           $record->setRecordPicture($newFilename);
         }
 
-        $entityManager->persist($record);
-        $entityManager->flush();
+        $em->persist($record);
+        $em->flush();
         $this->addFlash('notify', 'Record updated successfully');
         return $this->redirectToRoute('app_records');
+
+      } else if ($form->isSubmitted() && !$form->isValid()) {
+        dump($form->getErrors(true));
+        exit;
       }
+      //} else if ($form->isSubmitted() && !$form->isValid()) {
+      //  $this->addFlash('notify-error', 'Oops... Something went wrong...');
+      //  return $this->redirectToRoute('app_records');
+      //}
 
       return $this->renderForm('edit_record/index.html.twig', [
         'form' => $form,
