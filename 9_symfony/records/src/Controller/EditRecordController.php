@@ -99,6 +99,7 @@ class EditRecordController extends AbstractController
 
       return $this->renderForm('edit_record/index.html.twig', [
         'form' => $form,
+        'record' => $record,
         'picture' => $record->getRecordPicture(),
       ]);
     } else {

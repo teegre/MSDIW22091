@@ -20,42 +20,38 @@
           <b>Year:</b> {{ record.recordyear }}<br>
           <b>Label:</b> {{ record.recordlabel }}<br>
           <b>Genre: </b>{{ record.recordgenre }}<br><br>
-          <b>Track list:</b>
-          <table class="table table-hover table-sm">
-            <tbody>
-            {% set songs = [] %}
-            {% for song in record.songs %}
-              <tr><td>{{song.songtitle}}</td></tr>
-              {% set songs = songs|merge([song.songtitle]) %}
-            {% endfor %}
-            </tbody>
-          </table>
+          Track list:<br>
+          {% for song in record.songs %}
+            <div>
+              <b>{{song.songtitle}}</b>
+            </div>
+          {% endfor %}
         </div>
       </div>
     </div>
     <div class="row mt-2">
       <div class="col">
         <a href="http://localhost:8000/record/{{ record.recordid }}/edit"><button type="button" class="btn btn-success btn-sm">Edit</button></a>
-        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button>
+        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
         <button type="button" class="btn btn-primary btn-sm" onclick="history.back()" >Back</button>
       </div>
     </div>
   </div>
   <!-- Modal -->
   <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Delete artist</h5>
+          <h5 class="modal-title">Delete album</h5>
         </div>
         <div class="modal-body">
-          <p>Are you sure you want to delete this artist?</p>
+          <p>
+            Are you sure you want to delete this album?
+          </p>
         </div>
         <div class="modal-footer">
-          <a href="http://localhost:8000/record/{{ record.recordid }}/delete">
-            <button type="button" class="btn btn-danger btn-sm">Delete</button>
-          </a>
-          <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Cancel</button>
+          <a href="http://localhost:8000/record/{{ record.recordid }}/delete"><button type="button" class="btn btn-danger btn-sm">Delete</button></a>
+          <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">Cancel</button>
         </div>
       </div>
     </div>

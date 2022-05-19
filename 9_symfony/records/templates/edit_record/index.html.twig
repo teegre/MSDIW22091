@@ -13,7 +13,22 @@
       </div>
       <div class="mb-2">
       {{ form_start(form) }}
-      <img class="img-fluid img-thumbnail" src="/img/{{ picture }}"width="200"><br>
+      <div class="row">
+        <div class="col-md-3">
+          <img class="img-fluid img-thumbnail" src="/img/{{ picture }}"width="200"><br>
+        </div>
+        <div class="col">
+          <div class="col-form-label-sm">Track list:</div>
+          <div class="small">
+          {% for song in record.songs %}
+            <div id="{{ song.songid }}">
+              <b>{{ song.songtitle }}</b>
+            </div>
+          {% endfor %}
+          </div>
+          <a href="http://localhost:8000/record/{{ record.recordid }}/edit/songs"><button class="btn btn-success btn-sm mt-2" type="button">Edit</button></a>
+        </div>
+      </div>
         {{ form_label(form.record_title, 'Title', {
           'label_attr': {
             'class': 'col-form-label-sm',
@@ -75,20 +90,15 @@
             'class': 'form-control form-control-sm',
           }
         }) }}
-        {# }{{ form_label(form.record_picture, 'Picture', {
+        {{ form_label(form.record_picture, 'Picture', {
           'label_attr': {
             'class': 'col-form-label-sm',
           }
-          }) }} #}
+        }) }}
         {{ form_row(form.record_picture, {
-          'label_attr': {
-            'class': 'col-form-label-sm',
-            'value': 'Picture',
-          },
           'attr': {
             'class': 'form-control form-control-sm',
             'onchange': 'updatePicture()',
-            'onload' : 'updatePicture()',
           }
         }) }}
       </div>
