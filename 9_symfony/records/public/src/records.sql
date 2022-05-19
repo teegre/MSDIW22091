@@ -114,7 +114,7 @@ INSERT INTO `record` VALUES
 (31,'Wish You Were Here',1975,'wish_you_were_here-16.jpeg','Harvest','Psychedelic Rock, Prog Rock',19,16),
 (32,'Animals',1977,'animals-16.jpeg','Harvest','Psychedelic Rock, Prog Rock',19,16),
 (33,'Chaos A.D.',1993,'chaos_a.d.-15.jpeg','Roadrunner Records','Thrash Metal',9,15),
-(34,'Roots',1996,'roots-15.jpeg','Roadrunner Records','Thrash Metal',9,15),
+(34,'Roots',1996,'roots-15.jpeg','Roadrunner Records','Thrash Metal',9.99,15),
 (35,'Roxy Music',1972,'roxy_music-21.jpeg','Island Records','Alt Rock, Experimental, Glam',14,21),
 (36,'Avalon',1982,'avalon-21.jpeg','Warner Bros. Records','Pop Rock, Synth-Pop',9,21),
 (37,'Garlands',1982,'garlands-25.jpeg','4AD','Post-Punk, Ethereal',9,25),
@@ -152,10 +152,10 @@ INSERT INTO `record` VALUES
 (71,'Lullabies To Paralyze',2005,'lullabies_to_paralyze-4.jpg','Interscope Records','Indie Rock',14.99,4),
 (72,'A Moon Shaped Pool',2016,'a_moon_shaped_pool-22.jpg','XL Recordings','Art Rock, Indie Rock, Ambient, Experimental',34.99,22),
 (73,'A Light For Attracting Attention',2022,'a_light_for_attracting_attention-38.jpg','XL Recordings','Alternative Rock, Indie Rock',24.99,38),
-(74,'Organic Workshop Vol. I',2012,'organic_workshop_vol._i-39.jpg','None Records','Drone Metal, Dark Ambient',24.99,39),
-(75,'Organic Workshop Vol. II',2012,'organic_workshop_vol._ii-39.jpg','None Records','Drone Metal, Dark Ambient, Noise, Experimental',24.99,39),
-(76,'3',2012,'3-39.jpg','None Records','Drone Metal, Dark Ambient',24.99,39),
-(77,'3-II',2012,'3-ii-39.jpg','None Records','Drone Metal, Dark Ambient',24.99,39);
+(74,'Organic Workshop Vol. I',2012,'organic_workshop_vol._i-39.webp','None Records','Drone Metal, Dark Ambient',24.99,39),
+(75,'Organic Workshop Vol. II',2012,'organic_workshop_vol._ii-39.webp','None Records','Drone Metal, Dark Ambient, Noise, Experimental',24.99,39),
+(76,'3',2013,'3-39.jpg','None Records','Drone Metal, Dark Ambient',24.99,39),
+(77,'3-II',2013,'3-ii-39.jpg','None Records','Drone Metal, Dark Ambient',24.99,39);
 /*!40000 ALTER TABLE `record` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -193,4 +193,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-17  6:47:07
+-- Dump completed on 2022-05-19  8:55:21
