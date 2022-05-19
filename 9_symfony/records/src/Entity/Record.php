@@ -19,6 +19,7 @@ class Record
     private $record_title;
 
     #[ORM\Column(type: 'integer')]
+    #[ORM\OrderBy(['record_year' => 'ASC', 'record_title' => 'ASC'])]
     private $record_year;
 
     #[ORM\Column(type: 'string', length: 255)]
