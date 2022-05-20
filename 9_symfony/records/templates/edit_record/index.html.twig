@@ -19,16 +19,16 @@
         </div>
         <div class="col">
           <div class="col-form-label-sm">Track list:</div>
-          <div class="small">
-          {% for song in record.songs %}
-            <div id="{{ song.songid }}">
-              <b>{{ song.songtitle }}</b>
-            </div>
+          {% for song in form.songs %}
+            {{ form_widget(song.song_title, {
+              'attr': {
+                'class': 'form-control form-control-sm',
+              }
+            }) }}
           {% endfor %}
+            <a href="http://localhost:8000/record/{{ record.recordid }}/edit/songs"><button class="btn btn-success btn-sm mt-2" type="button">Edit</button></a>
           </div>
-          <a href="http://localhost:8000/record/{{ record.recordid }}/edit/songs"><button class="btn btn-success btn-sm mt-2" type="button">Edit</button></a>
         </div>
-      </div>
         {{ form_label(form.record_title, 'Title', {
           'label_attr': {
             'class': 'col-form-label-sm',

@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Repository\ArtistRepository;
 use App\Entity\Record;
 use App\Entity\Artist;
+use App\Form\SongType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -28,6 +30,12 @@ class EditRecordController extends AbstractController
 
     if ($record) {
       $form = $this->createFormBuilder($record)
+        ->add('songs', CollectionType::class, [
+          'entry_type' => SongType::class,
+          'allow_add' => true,
+          'allow_delete' => true,
+          'label' => false,
+        ])
         ->add('record_title', TextType::class)
         ->add('artist_id', EntityType::class, [
           'class' => Artist::class,
@@ -42,6 +50,8 @@ class EditRecordController extends AbstractController
         ->add('record_genre', TextType::class) 
         ->add('record_price', NumberType::class)
         ->add('record_picture', FileType::class, [
+          'label' => 'Picture',
+          'label_attr' => [ 'class' => 'col-form-label-sm' ],
           'mapped' => false,
           'required' => false,
           'constraints' => [
