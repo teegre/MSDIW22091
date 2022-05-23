@@ -32,8 +32,10 @@ class EditRecordController extends AbstractController
       $form = $this->createFormBuilder($record)
         ->add('songs', CollectionType::class, [
           'entry_type' => SongType::class,
+          'entry_options' => ['label' => false ],
           'allow_add' => true,
           'allow_delete' => true,
+          'prototype' => true,
           'label' => false,
         ])
         ->add('record_title', TextType::class)
@@ -50,8 +52,6 @@ class EditRecordController extends AbstractController
         ->add('record_genre', TextType::class) 
         ->add('record_price', NumberType::class)
         ->add('record_picture', FileType::class, [
-          'label' => 'Picture',
-          'label_attr' => [ 'class' => 'col-form-label-sm' ],
           'mapped' => false,
           'required' => false,
           'constraints' => [
@@ -93,7 +93,17 @@ class EditRecordController extends AbstractController
           $record->setRecordPicture($newFilename);
         }
 
-        $em->persist($record);
+        $songs = $form->get('songs')->getData();
+        $count = 0;
+        foreach ($songs as $song) {
+          $count++;
+          if (!($song->getRecordId())) {
+            $song->setRecordId($record);
+            $song->setSongId($count);
+            $em->persist($song);
+          }
+        }
+
         $em->flush();
         $this->addFlash('notify', 'Record updated successfully');
         return $this->redirectToRoute('app_records');

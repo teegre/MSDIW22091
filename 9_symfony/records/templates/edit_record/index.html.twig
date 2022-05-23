@@ -3,125 +3,130 @@
 {% block title %}Velvet Records | Edit Record{% endblock %}
 
 {% block body %}
-  <div class="container mt-4">
-    <div class="row align-items-center">
-      <div class="col-md-8">
-        <h1><b>Edit Record</b></h1>
+<div class="container mt-4 mb-2">
+  <div class="row align-items-center">
+    <div class="col-md-8"><h1><b>Edit Record</b></h1></div>
+    <div class="col text-right">
+      <button class="btn btn-primary btn-sm" onclick="history.back()">Back</button>
+    </div>
+  </div>
+  {{ form_start(form) }}
+    <div class="row">
+      <div class="col-md-3">
+        <img class="img-fluid img-thumbnail" src="/img/{{ picture }}" width="200"><br>
       </div>
-      <div class="col text-right">
-        <button class="btn btn-primary btn-sm" onclick="history.back()">Back</button>
-      </div>
-      <div class="mb-2">
-      {{ form_start(form) }}
-      <div class="row">
-        <div class="col-md-3">
-          <img class="img-fluid img-thumbnail" src="/img/{{ picture }}"width="200"><br>
-        </div>
-        <div class="col">
-          <div class="col-form-label-sm">Track list:</div>
-          {% for song in form.songs %}
+      <div class="col">
+        <div class="col-form-label-sm">Track list:</div>
+        {% set count = 0 %}
+        {% for song in form.songs %}
+          <div class="form-inline">
+            <div class="input-group">
             {{ form_widget(song.song_title, {
               'attr': {
                 'class': 'form-control form-control-sm',
               }
             }) }}
-          {% endfor %}
-            <a href="http://localhost:8000/record/{{ record.recordid }}/edit/songs"><button class="btn btn-success btn-sm mt-2" type="button">Edit</button></a>
+              <div class="input-group-append">
+                <button class="btn btn-danger btn-sm"><i class="fa fa-close"></i></button>
+              </div>
+            </div>
           </div>
-        </div>
-        {{ form_label(form.record_title, 'Title', {
-          'label_attr': {
-            'class': 'col-form-label-sm',
-          }
-        }) }}
-        {{ form_widget(form.record_title, {
-          'attr': {
-            'class': 'form-control form-control-sm',
-          }
-        }) }}
+        {% set count = count + 1 %}
+        {% endfor %}
+        <button class="add_item_link btn btn-success btn-sm mt-2" type="button" data-collection-holder-class="songs" onclick="addSong">Add song</button>
+      </div>
+    </div>
+  {{ form_label(form.record_title, 'Title', {
+    'label_attr': {
+      'class': 'col-form-label-sm',
+    }
+  }) }}
+  {{ form_widget(form.record_title, {
+    'attr': {
+      'class': 'form-control form-control-sm',
+    }
+  }) }}
 
-        {{ form_label(form.artist_id, 'Artist', {
-          'label_attr': {
-            'class': 'col-form-label-sm',
-          }
-        }) }}
-        {{ form_widget(form.artist_id, {
-          'attr': {
-            'class': 'form-select form-select-sm',
-          }
-        }) }}
-        {{ form_label(form.record_year, 'Year', {
-          'label_attr': {
-            'class': 'col-form-label-sm',
-          }
-        }) }}
-        {{ form_widget(form.record_year, {
-          'attr': {
-            'class': 'form-control form-control-sm',
-          }
-        }) }}
-        {{ form_label(form.record_label, 'Label', {
-          'label_attr': {
-            'class': 'col-form-label-sm',
-          }
-        }) }}
-        {{ form_widget(form.record_label, {
-          'attr': {
-            'class': 'form-control form-control-sm',
-           }
-        }) }}
-        {{ form_label(form.record_genre, 'Genre', {
-          'label_attr': {
-            'class': 'col-form-label-sm',
-          }
-        }) }}
-        {{ form_widget(form.record_genre, {
-          'attr': {
-            'class': 'form-control form-control-sm',
-           }
-        }) }}
-        {{ form_label(form.record_price, 'Price', {
-          'label_attr' : {
-            'class': 'col-form-label-sm',
-          }
-        }) }}
-        {{ form_widget(form.record_price, {
-          'attr': {
-            'class': 'form-control form-control-sm',
-          }
-        }) }}
-        {{ form_label(form.record_picture, 'Picture', {
-          'label_attr': {
-            'class': 'col-form-label-sm',
-          }
-        }) }}
-        {{ form_row(form.record_picture, {
-          'attr': {
-            'class': 'form-control form-control-sm',
-            'onchange': 'updatePicture()',
-          }
-        }) }}
-      </div>
-      <div class="d-flex flex-row">
-        <div class="m-1">
-          {{ form_row(form.submit, {
-            'attr': {
-              'class': 'btn btn-danger btn-sm',
-            }
-          }
-          ) }}
-        </div>
-        <div class="m-1">
-          {{ form_row(form.cancel, {
-            'attr': {
-              'class': 'btn btn-secondary btn-sm',
-            }
-          }
-          ) }}
-        </div>
-      </div>
-    {{ form_end(form) }}
-    </div> 
+  {{ form_label(form.artist_id, 'Artist', {
+    'label_attr': {
+      'class': 'col-form-label-sm',
+    }
+  }) }}
+  {{ form_widget(form.artist_id, {
+    'attr': {
+      'class': 'form-select form-select-sm',
+    }
+  }) }}
+  {{ form_label(form.record_year, 'Year', {
+    'label_attr': {
+      'class': 'col-form-label-sm',
+    }
+  }) }}
+  {{ form_widget(form.record_year, {
+    'attr': {
+      'class': 'form-control form-control-sm',
+    }
+  }) }}
+  {{ form_label(form.record_label, 'Label', {
+    'label_attr': {
+      'class': 'col-form-label-sm',
+    }
+  }) }}
+  {{ form_widget(form.record_label, {
+    'attr': {
+      'class': 'form-control form-control-sm',
+     }
+  }) }}
+  {{ form_label(form.record_genre, 'Genre', {
+    'label_attr': {
+      'class': 'col-form-label-sm',
+    }
+  }) }}
+  {{ form_widget(form.record_genre, {
+    'attr': {
+      'class': 'form-control form-control-sm',
+     }
+  }) }}
+  {{ form_label(form.record_price, 'Price', {
+    'label_attr' : {
+      'class': 'col-form-label-sm',
+    }
+  }) }}
+  {{ form_widget(form.record_price, {
+    'attr': {
+      'class': 'form-control form-control-sm',
+    }
+  }) }}
+  {{ form_label(form.record_picture, 'Picture', {
+    'label_attr': {
+      'class': 'col-form-label-sm',
+    }
+  }) }}
+  {{ form_widget(form.record_picture, {
+    'attr': {
+      'class': 'form-control form-control-sm',
+      'onchange': 'updatePicture()',
+    }
+  }) }}
+  <div class="d-flex flex-row">
+    <div class="m-1">
+      {{ form_row(form.submit, {
+        'attr': {
+          'class': 'btn btn-danger btn-sm',
+        }
+      }
+      ) }}
+    </div>
+    <div class="m-1">
+      {{ form_row(form.cancel, {
+        'attr': {
+          'class': 'btn btn-secondary btn-sm',
+        }
+      }
+      ) }}
+    </div>
   </div>
+  {{ form_end(form) }}
   <script src="/js/script.js"></script>
+</div>
 {% endblock %}

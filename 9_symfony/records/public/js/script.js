@@ -9,3 +9,4 @@ function updatePicture() {
     reader.readAsDataURL(file);
   }
 }
+
