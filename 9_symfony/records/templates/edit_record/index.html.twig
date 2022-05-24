@@ -1,5 +1,22 @@
 {% extends 'base.html.twig' %}
 
+{% import _self as formMacros %}
+
+{% macro printSongPrototype(song, count) %}
+  <div class="form-inline mb-1" id="song-{{ count }}">
+    <div class="input-group">
+      {{ form_widget(song.song_title, {
+        'attr': {
+          'class': 'form-control form-control-sm',
+        }
+        }) }}
+      <div class="input-group-append">
+        <button type="button" class="btn btn-danger btn-sm" onclick="removeSong({{ count }})"><i class="fa fa-close"></i></button>
+      </div>
+    </div>
+  </div>
+{% endmacro %}
+
 {% block title %}Velvet Records | Edit Record{% endblock %}
 
 {% block body %}
@@ -17,25 +34,19 @@
       </div>
       <div class="col">
         <div class="col-form-label-sm">Track list:</div>
-        {% set count = 0 %}
-        {% for song in form.songs %}
-          <div class="form-inline">
-            <div class="input-group">
-            {{ form_widget(song.song_title, {
-              'attr': {
-                'class': 'form-control form-control-sm',
-              }
-            }) }}
-              <div class="input-group-append">
-                <button class="btn btn-danger btn-sm"><i class="fa fa-close"></i></button>
-              </div>
-            </div>
+          <div class="songs"
+            data-index="{{ form.songs|length > 0 ? form.songs|last.vars.name + 1 : 0 }}"
+            data-prototype="{{ formMacros.printSongPrototype(form.songs.vars.prototype, form.songs|length)|e('html_attr') }}"
+          >
+          {% set count = 0 %}
+          {% for song in form.songs %}
+            {{ formMacros.printSongPrototype(song, count) }}
+          {% set count = count + 1 %}
+          {% endfor %}
           </div>
-        {% set count = count + 1 %}
-        {% endfor %}
-        <button class="add_item_link btn btn-success btn-sm mt-2" type="button" data-collection-holder-class="songs" onclick="addSong">Add song</button>
+          <button class="btn btn-success btn-sm mt-2" type="button" data-collection-holder-class="songs" onclick="addSong(event)">Add song</button>
+        </div>
       </div>
-    </div>
   {{ form_label(form.record_title, 'Title', {
     'label_attr': {
       'class': 'col-form-label-sm',

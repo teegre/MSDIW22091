@@ -109,13 +109,9 @@ class EditRecordController extends AbstractController
         return $this->redirectToRoute('app_records');
 
       } else if ($form->isSubmitted() && !$form->isValid()) {
-        dump($form->getErrors(true));
-        exit;
+        $this->addFlash('notify-error', 'Oops... Something went wrong...');
+        return $this->redirectToRoute('app_records');
       }
-      //} else if ($form->isSubmitted() && !$form->isValid()) {
-      //  $this->addFlash('notify-error', 'Oops... Something went wrong...');
-      //  return $this->redirectToRoute('app_records');
-      //}
 
       return $this->renderForm('edit_record/index.html.twig', [
         'form' => $form,

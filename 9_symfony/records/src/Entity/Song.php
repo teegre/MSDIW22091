@@ -15,7 +15,7 @@ class Song
     private $song_id;
 
     #[ORM\Id]
-    #[ORM\ManyToOne(targetEntity: Record::class, inversedBy: 'songs', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(targetEntity: Record::class, inversedBy: 'songs')]
     #[ORM\JoinColumn(name: 'record_id', referencedColumnName: 'record_id', nullable: false)]
     private $record_id;
 
