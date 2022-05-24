@@ -27,7 +27,7 @@ CREATE TABLE `artist` (
   `artist_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `artist_img` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`artist_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +63,8 @@ INSERT INTO `artist` VALUES
 (36,'Peter Gabriel','peter_gabriel.jpg'),
 (37,'Terence Trent D\'Arby','terence_trent_d\'arby.jpg'),
 (38,'The Smile','the_smile.jpg'),
-(39,'UMAL115','umal115.jpg');
+(39,'UMAL115','umal115.jpg'),
+(40,'The Future Sound Of London','the_future_sound_of_london.png');
 /*!40000 ALTER TABLE `artist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,7 +87,7 @@ CREATE TABLE `record` (
   PRIMARY KEY (`record_id`),
   KEY `IDX_9B349F91B7970CF8` (`artist_id`),
   CONSTRAINT `record_idfk_1` FOREIGN KEY (`artist_id`) REFERENCES `artist` (`artist_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -114,7 +115,7 @@ INSERT INTO `record` VALUES
 (31,'Wish You Were Here',1975,'wish_you_were_here-16.jpeg','Harvest','Psychedelic Rock, Prog Rock',19,16),
 (32,'Animals',1977,'animals-16.jpeg','Harvest','Psychedelic Rock, Prog Rock',19,16),
 (33,'Chaos A.D.',1993,'chaos_a.d.-15.jpeg','Roadrunner Records','Thrash Metal',9,15),
-(34,'Roots',1996,'roots-15.jpeg','Roadrunner Records','Thrash Metal',9.99,15),
+(34,'Roots',1996,'roots-15.jpeg','Roadrunner Records','Thrash Metal',9,15),
 (35,'Roxy Music',1972,'roxy_music-21.jpeg','Island Records','Alt Rock, Experimental, Glam',14,21),
 (36,'Avalon',1982,'avalon-21.jpeg','Warner Bros. Records','Pop Rock, Synth-Pop',9,21),
 (37,'Garlands',1982,'garlands-25.jpeg','4AD','Post-Punk, Ethereal',9,25),
@@ -155,7 +156,9 @@ INSERT INTO `record` VALUES
 (74,'Organic Workshop Vol. I',2012,'organic_workshop_vol._i-39.webp','None Records','Drone Metal, Dark Ambient',24.99,39),
 (75,'Organic Workshop Vol. II',2012,'organic_workshop_vol._ii-39.webp','None Records','Drone Metal, Dark Ambient, Noise, Experimental',24.99,39),
 (76,'3',2013,'3-39.jpg','None Records','Drone Metal, Dark Ambient',24.99,39),
-(77,'3-II',2013,'3-ii-39.jpg','None Records','Drone Metal, Dark Ambient',24.99,39);
+(77,'3-II',2013,'3-ii-39.jpg','None Records','Drone Metal, Dark Ambient',24.99,39),
+(78,'Lifeforms',1994,'lifeforms-40.jpg','Virgin','Leftfield, Downtempo, Illbient, IDM, Ambient, Dub Techno, Experimental',49.99,40),
+(79,'Dead Cities',1996,'dead_cities-40.jpg','Virgin','Leftfield, Abstract, Big Beat, Ambient, Downtempo, Experimental',64.99,40);
 /*!40000 ALTER TABLE `record` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,9 +173,8 @@ CREATE TABLE `song` (
   `record_id` int(11) NOT NULL,
   `song_id` int(11) NOT NULL AUTO_INCREMENT,
   `song_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`record_id`,`song_id`),
-  KEY `record_id` (`record_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`song_id`,`record_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,6 +183,10 @@ CREATE TABLE `song` (
 
 LOCK TABLES `song` WRITE;
 /*!40000 ALTER TABLE `song` DISABLE KEYS */;
+INSERT INTO `song` VALUES
+(76,1,'Ceremony'),
+(76,2,'Issues'),
+(76,3,'Octopus');
 /*!40000 ALTER TABLE `song` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -193,4 +199,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-19  8:55:21
+-- Dump completed on 2022-05-24  6:33:06
