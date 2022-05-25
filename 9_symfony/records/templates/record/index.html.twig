@@ -21,9 +21,17 @@
           <b>Label:</b> {{ record.recordlabel }}<br>
           <b>Genre: </b>{{ record.recordgenre }}<br><br>
           Track list:<br>
+          {% set count = 1 %}
+          {% set ignore = false %}
           {% for song in record.songs %}
             <div>
-              <b>{{song.songtitle}}</b>
+              {% if count > 20 and not ignore %}
+                ...
+                {% set ignore = true %}
+              {% elseif not ignore %}
+                <b>{{song.songtitle}}</b>
+                {% set count = count + 1 %}
+              {% endif %}
             </div>
           {% endfor %}
         </div>

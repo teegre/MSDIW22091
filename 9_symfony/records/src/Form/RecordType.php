@@ -21,11 +21,6 @@ class RecordType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-          ->add('songs', CollectionType::class, [
-            'entry_type' => SongType::class,
-            'entry_options' => [ 'label' => false ],
-          ]);
-        $builder
           ->add('record_title', TextType::class, [
             'attr' => [
               'class' => 'form-control form-control-sm mb-2',
@@ -35,7 +30,6 @@ class RecordType extends AbstractType
             'label_attr' => [
               'class' => 'col-form-label-sm',
             ]
-
           ])
             ->add('artist_id', EntityType::class, [
               'class' => Artist::class,
