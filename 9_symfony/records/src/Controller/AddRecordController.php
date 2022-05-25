@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Controller;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\Record;
 use App\Form\RecordType;
 use Doctrine\Persistence\ManagerRegistry;
@@ -13,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AddRecordController extends AbstractController
 {
     #[Route('/add/record', name: 'app_add_record')]
+    #[IsGranted('ROLE_USER')]
     public function index(Request $request, ManagerRegistry $doctrine): Response
     {
         $record = new Record();

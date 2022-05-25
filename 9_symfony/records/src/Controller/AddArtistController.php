@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Artist;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -17,6 +18,7 @@ use Symfony\Component\Validator\Constraints\File;
 class AddArtistController extends AbstractController
 {
     #[Route('/add/artist', name: 'app_add_artist')]
+    #[IsGranted('ROLE_USER')]
     public function index(Request $request, ManagerRegistry $doctrine): Response
     {
       $artist = new Artist();

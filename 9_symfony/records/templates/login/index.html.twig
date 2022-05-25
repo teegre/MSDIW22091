@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Velvet Records | Login{% endblock %}
+
+{% block body %}
+  <div class="container">
+    {% if error %}
+    <div>
+      {{ error.messageKey|trans(error.messageData, 'security') }}
+    </div>
+    {% endif %}
+    <div class="row mt-4">
+      <h1>Login</h1>
+    </div>
+    <div class="row">
+      <form action="{{ path('app_login') }}" method="POST">
+        <label class="col-form-label-sm" for="email">E-mail</label>
+        <input type="text" id="email" name="_username" class="form-control form-control-sm mb-1" value="{{ last_username }}">
+        <label class="col-form-label-sm" for="pwd">Password</label>
+        <input type="password" id="pwd" name="_password" class="form-control form-control-sm mb-1">
+        <input type="hidden" name="_target_path" value="/artists">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        <input type="submit"class="btn btn-primary btn-sm mt-1" value="Login">
+      </form>
+    </div>
+  </div>
+{% endblock %}

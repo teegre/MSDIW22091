@@ -1,22 +1,33 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="http://localhost:8000">Velvet Records</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="{% if not is_granted('ROLE_USER') %} http://localhost:8000 {% else %} http://localhost:8000/artists{% endif %}">Velvet Records</a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item {% if (app.request.attributes.get('_route') == 'app_home') %} active {% endif %}">
-            <a class="nav-link" href="http://localhost:8000">Home</a>
-          </li>
+          {% if is_granted('ROLE_USER') %}
           <li class="nav-item {% if (app.request.attributes.get('_route') == 'app_artists') %} active {% endif %}">
             <a class="nav-link" href="http://localhost:8000/artists">Artists</a>
           </li>
           <li class="nav-item {% if (app.request.attributes.get('_route') == 'app_records') %} active {% endif %}">
             <a class="nav-link" href="http://localhost:8000/records">Records</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost:8000/logout">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item {% if (app.request.attributes.get('_route') == 'app_home') %} active {% endif %}">
+            <a class="nav-link" href="http://localhost:8000">Home</a>
+          </li>
+          <li class="nav-item {% if (app.request.attributes.get('_route') == 'app_register') %} active {% endif %}">
+            <a class="nav-link" href="http://localhost:8000/register">Register</a>
+          </li>
+          <li class="nav-item {% if (app.request.attributes.get('_route') == 'app_login') %} active {% endif %}">
+            <a class="nav-link" href="http://localhost:8000/login">Login</a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </div>

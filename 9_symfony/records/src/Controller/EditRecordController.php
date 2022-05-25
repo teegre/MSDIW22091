@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\ArtistRepository;
 use App\Entity\Record;
 use App\Entity\Artist;
@@ -24,6 +25,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class EditRecordController extends AbstractController
 {
   #[Route('/record/{id}/edit', name: 'app_edit_record')]
+  #[IsGranted('ROLE_USER')]
   public function index(Request $request, int $id, EntityManagerInterface $em): Response
   {
     $record = $em->find(Record::class, $id);

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\ArtistRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,6 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArtistController extends AbstractController
 {
   #[Route('/artist/{id}', name: 'app_artist', methods: ['GET', 'HEAD'])]
+  #[IsGranted('ROLE_USER')]
   public function index(int $id, ArtistRepository $artistRepository): Response
   {
     $artist = $artistRepository->find($id);

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Velvet Records | Register{% endblock %}
+
+{% block body %}
+  {% for flash_error in app.flashes('verify_email_error') %}
+    <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+  {% endfor %}
+
+  <div class="container mt-4">
+    <h1>Register</h1>
+
+    {{ form_start(registrationForm) }}
+      {{ form_row(registrationForm.email, {
+        label: 'E-mail',
+        label_attr: {
+          class: 'col-form-label-sm'
+        },
+        attr: {
+          class: 'form-control form-control-sm',
+          placeholder: 'Enter your e-mail address...',
+        },
+      }) }}
+      <small id="emailHelp" class="form-text text-muted">We value your privacy therefore we're going to sell your personal data and make money.</small>
+      {{ form_row(registrationForm.plainPassword, {
+        label: 'Password',
+        label_attr: {
+          class: 'col-form-label-sm',
+        },
+        attr: {
+          class: 'form-control form-control-sm',
+          placeholder: 'Choose a password...',
+        },
+      }) }}
+      <div class="form-check mt-1 mb-1">
+      {{ form_row(registrationForm.agreeTerms, {
+        label: 'Agree terms of service',
+        label_attr: { class: 'form-check-label form-check-label-sm' },
+        attr: {
+          class: 'form-check-input form-check-input-sm',
+        },
+      }) }}
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm">Register</button>
+    {{ form_end(registrationForm) }}
+  </div>
+{% endblock %}
