@@ -2,3 +2,4 @@
 7_authentification/2_pwd/assets/php/db.ini
 9_symfony/records/var/*
 9_symfony/records/.env.local
+9_symfony/records/vendor/*
