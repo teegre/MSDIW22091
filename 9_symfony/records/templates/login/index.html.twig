@@ -3,25 +3,57 @@
 {% block title %}Velvet Records | Login{% endblock %}
 
 {% block body %}
-  <div class="container mt-4">
+  <div class="container mt-2 py-5 h-100">
     {% if error %}
     <div class="alert alert-danger">
       {{ error.messageKey|trans(error.messageData, 'security') }}
     </div>
     {% endif %}
-    <div class="row mb-2">
-      <h1 class="display-4"><b>Login</b></h1>
-    </div>
-    <div class="row">
-      <form action="{{ path('app_login') }}" method="POST">
-        <label class="col-form-label-sm" for="email">E-mail</label>
-        <input type="text" id="email" name="_username" class="form-control form-control-sm mb-1" value="{{ last_username }}">
-        <label class="col-form-label-sm" for="pwd">Password</label>
-        <input type="password" id="pwd" name="_password" class="form-control form-control-sm mb-1">
-        <input type="hidden" name="_target_path" value="/artists">
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-        <input type="submit"class="btn btn-primary btn-sm mt-1" value="Login">
-      </form>
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+                <p class="mb-4"><h1 class="display-4"><b>Login</b></h1></p>
+                <form action="{{ path('app_login') }}" method="POST">
+                  <p class="small"><strong>Please login to your account</strong></p>
+                  <div class="form-outline mb-2">
+                    <label class="col-form-label-sm" for="email">E-mail</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="_username"
+                      class="form-control form-control-sm mb-1"
+                      value="{{ last_username }}"
+                      required
+                    />
+                  </div>
+                  <div class="form-outline mb-4">
+                    <label class="col-form-label-sm" for="pwd">Password</label>
+                    <input
+                      type="password"
+                      id="pwd"
+                      name="_password"
+                      class="form-control form-control-sm mb-1"
+                      required
+                    />
+                  </div>
+                  <input type="hidden" name="_target_path" value="/artists">
+                  <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                  <div class="text-center pt-1 mb-5 pb-1">
+                    <input type="submit"class="btn btn-primary btn-block btn-sm" value="Login">
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center pb-4">
+                    <p class="small mb-0 me-2">Don't have an account?</p>
+                    <a href="{{ path('app_register') }}"><button type="button" class="btn btn-outline-danger btn-sm">Register</button></a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 {% endblock %}

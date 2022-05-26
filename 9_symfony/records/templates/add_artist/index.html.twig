@@ -1,9 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% if not is_granted('ROLE_USER') %}
-  {{ path('app_login') }}
-{% endif %}
-
 {% block title %}Velvet Records - Add Artist{% endblock %}
 
 {% block body %}
