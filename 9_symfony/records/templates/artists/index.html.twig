@@ -32,7 +32,7 @@
           <div class="col-lg-4 mb-2">
             <div class="small"><b>{{ artist.artistname }}</b></div>
             <a href="http://localhost:8000/artist/{{ artist.artistid }}">
-              <img class="img img-thumbnail" src="/img/{{ artist.artistimg }}" width="100">
+              <img class="img-fluid img-thumbnail" src="/img/{{ artist.artistimg }}">
             </a>
           </div>
       {% if (c == 3) %}

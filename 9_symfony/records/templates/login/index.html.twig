@@ -3,22 +3,21 @@
 {% block title %}Velvet Records | Login{% endblock %}
 
 {% block body %}
-  <div class="container mt-2 py-5 h-100">
+  <div class="container mt-4">
     {% if error %}
     <div class="alert alert-danger">
       {{ error.messageKey|trans(error.messageData, 'security') }}
     </div>
     {% endif %}
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-xl-10">
+    <div class="row d-flex justify-content-center align-items-center">
         <div class="card rounded-3">
           <div class="row g-0">
-            <div class="col-lg-6">
-              <div class="card-body p-md-5 mx-md-4">
+              <div class="card-body">
                 <p class="mb-4"><h1 class="display-4"><b>Login</b></h1></p>
+                <hr>
                 <form action="{{ path('app_login') }}" method="POST">
                   <p class="small"><strong>Please login to your account</strong></p>
-                  <div class="form-outline mb-2">
+                  <div class="form-group mb-2">
                     <label class="col-form-label-sm" for="email">E-mail</label>
                     <input
                       type="email"
@@ -29,7 +28,7 @@
                       required
                     />
                   </div>
-                  <div class="form-outline mb-4">
+                  <div class="form-group mb-4">
                     <label class="col-form-label-sm" for="pwd">Password</label>
                     <input
                       type="password"
@@ -41,7 +40,7 @@
                   </div>
                   <input type="hidden" name="_target_path" value="/artists">
                   <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-                  <div class="text-center pt-1 mb-5 pb-1">
+                  <div class="pt-1 mb-4 pb-1">
                     <input type="submit"class="btn btn-primary btn-block btn-sm" value="Login">
                   </div>
                   <div class="d-flex align-items-center justify-content-center pb-4">
@@ -50,10 +49,8 @@
                   </div>
                 </form>
               </div>
-            </div>
           </div>
         </div>
-      </div>
     </div>
   </div>
 {% endblock %}
