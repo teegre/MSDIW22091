@@ -108,15 +108,14 @@
       'class': 'form-control form-control-sm',
     }
   }) }}
-  {{ form_label(form.record_picture, 'Picture', {
+  {{ form_row(form.record_picture, {
+    label: 'Picture',
     'label_attr': {
       'class': 'col-form-label-sm',
-    }
-  }) }}
-  {{ form_widget(form.record_picture, {
+    },
     'attr': {
       'class': 'form-control form-control-sm',
-      'onchange': 'updatePicture()',
+      'onchange': 'updatePicture("record")',
     }
   }) }}
   <div class="d-flex flex-row">
