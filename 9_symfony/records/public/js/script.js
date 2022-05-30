@@ -23,10 +23,27 @@
   for the JavaScript code in this page.
 */
 
-function updatePicture() {
+function updatePicture(formType) {
   /* update picture display */
   img = document.getElementsByTagName("img")[0];
-  file = document.getElementById("form_record_picture").files[0];
+  switch (formType) {
+    case 'artist':
+      var id = "artist_artist_img";
+      break;
+    case 'record':
+      var id = "form_record_picture";
+      break
+    default:
+      var id = ""
+  }
+
+  try {
+    file = document.getElementById(id).files[0];
+  } catch (error) {
+    console.log(error);
+    return;
+  }
+
   if (file.type.match('^image.*$')) {
     reader = new FileReader();
     reader.onload = function () {
