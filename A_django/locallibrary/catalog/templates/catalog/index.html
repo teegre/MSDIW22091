@@ -1,0 +1,15 @@
+{% extends 'catalog/base_generic.html' %}
+{% block title %}Bibliothèque | Maison{% endblock %}
+{% block content %}
+  <h1>Bibliothèque | Maison</h1>
+  <p>Bienvenue à la <strong>Bibliothèque</strong> !</p>
+  <h2>Contenu</h2>
+  <p>La Bibliothèque dispose de :</p>
+  <ul>
+    <li><small><strong>Livres : </strong>{{ num_books }}</small></li>
+    <li><small><strong>Exemplaires : </strong>{{ num_instances }}</small></li>
+    <li><small><strong>Exemplaires disponibles : </strong>{{ num_instances_available }}</small></li>
+    <li><small><strong>Auteurs : </strong>{{ num_authors }}</small></li>
+    <li><small><strong>Genres littéraires : </strong>{{ num_genres }}</small></li>
+  </ul>
+{% endblock %}
