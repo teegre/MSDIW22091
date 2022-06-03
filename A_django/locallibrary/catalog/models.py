@@ -8,6 +8,9 @@ from django.urls import reverse
 class Genre(models.Model):
   """ Book genre """
   name = models.CharField(max_length=200, help_text='Entrez un genre littéraire (ex: Science fiction.)')
+
+  class Meta:
+    ordering = ['name']
   
   def __str__(self):
     return self.name
@@ -16,13 +19,16 @@ class Book(models.Model):
   """ A book """
   title = models.CharField(max_length=200)
   author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
-  summary = models.TextField(max_length=1000, help_text='Entrez une brève description du livre.')
+  summary = models.TextField(max_length=1000, help_text='Entrez une brève description de l\'ouvrage.')
   isbn = models.CharField(
     'ISBN',
     max_length=13,
     help_text='N° ISBN à 13 caractères. <a href="https://www.isbn-international.org/content/what-isbn">ISBN</a>'
   )
   genre = models.ManyToManyField(Genre, help_text='Sélectionner un genre pour ce livre.')
+
+  class Meta:
+    ordering = ['author', 'title']
 
   def __str__(self):
     """ Book representation """
