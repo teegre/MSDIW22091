@@ -6,10 +6,8 @@
   <h2>Contenu</h2>
   <p>La Bibliothèque dispose de :</p>
   <ul>
-    <li><small><strong>Livres : </strong>{{ num_books }}</small></li>
-    <li><small><strong>Exemplaires : </strong>{{ num_instances }}</small></li>
-    <li><small><strong>Exemplaires disponibles : </strong>{{ num_instances_available }}</small></li>
-    <li><small><strong>Auteurs : </strong>{{ num_authors }}</small></li>
-    <li><small><strong>Genres littéraires : </strong>{{ num_genres }}</small></li>
+    <li><small><strong>{{num_books}} livres</strong> en <strong>{{ num_instances }} exemplaires</strong> dont <strong>{{ num_instances_available }} disponibles</strong></small></li>
+    <li><small><strong>{{ num_authors }} auteurs</strong></small></li>
+    <li><small><strong>et {{ num_genres }} genres littéraires.</strong></small></li>
   </ul>
 {% endblock %}
